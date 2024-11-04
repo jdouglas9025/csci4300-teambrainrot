@@ -1,10 +1,10 @@
+"use client" // Need to prevent an issue with actions for button
+
 import playLightIcon from '../icons/PlayLight.svg'
 import addLightIcon from '../icons/AddLight.svg'
 import gearLightIcon from '../icons/GearLight.svg'
 
-// Add props to change button based on desired button
-
-enum ButtonType {
+export enum ButtonType {
     login, add, play, gear, signup, door, moon, done
 }
 
