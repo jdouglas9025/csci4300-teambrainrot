@@ -1,0 +1,20 @@
+.quizItem {
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.answerItem {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+
+.answerImage {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    vertical-align: middle;
+}
+
+.answerContent {
+    /** TO DO **/
+}
