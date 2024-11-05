@@ -11,6 +11,7 @@ export enum ButtonType {
 }
 
 interface ButtonProps {
+    className?: string
     type?: 'button' | 'submit' | 'reset' // Type of button (e.g., submit, standard button with custom action)
     buttonType: ButtonType
     onClick: () => void // Action to take when this button is clicked
@@ -47,6 +48,7 @@ export default function Button(props: ButtonProps) {
 
     return (
         <button
+            className={props.className}
             type={props.type || 'button'}
             onClick={props.onClick}
         >
