@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /** Align in center **/
+    margin: 1rem auto;
+    text-transform: uppercase;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /** Overridden by score and incorrect questions **/
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.score {
+    font-size: 2rem;
+}
+
+.incorrectQuestions {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    text-decoration: underline;
+}
+
+.question {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    width: 30rem;
+    height: 7.5rem;
+    padding: 1rem;
+    border: .25rem solid black;
+}
+
+.answerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.answer {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    width: 30rem;
+    padding: 1rem;
+    border: .25rem solid black;
+    margin-bottom: 0.25rem;
+}
+
+.answerImage {
+    width: 2.5rem;
+    margin-right: 0.5rem;
+}
+
+.answerId {
+    font-weight: bold;
+}

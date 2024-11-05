@@ -1,0 +1,78 @@
+/** CSS for both sign up and login pages since same structure **/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /** Align in center **/
+    margin: 1rem auto;
+    text-transform: uppercase;
+}
+
+.container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fieldsContainer {
+    padding: 1rem;
+    border: .25rem solid black;
+}
+
+/** Container for label and input box pairs **/
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    margin-bottom: 1rem;
+}
+
+.inputContainer label {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.inputContainer input {
+    /** Take full width of container **/
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: .25rem solid black;
+}
+
+.button {
+    width: 10rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+    border: .25rem solid black;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    /** Slight gray color when hovering **/
+    background-color: #ede6e6;
+}
+
+.link {
+    /** Slightly smaller font **/
+    font-size: 0.9rem;
+}
+
+/** Styles for Login/Signup text in sentence **/
+.link span {
+    font-weight: bold;
+}
+
+.link span:hover {
+    /** Slight gray color when hovering **/
+    color: #ede6e6;
+}

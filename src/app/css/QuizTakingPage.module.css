@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /** Align in center **/
+    margin: 1rem auto;
+    text-transform: uppercase;
+}
+
+.question {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    width: 30rem;
+    height: 7.5rem;
+    padding: 1rem;
+    border: .25rem solid black;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.answer {
+    font-size: 1rem;
+    width: 30rem;
+    padding: 1rem;
+    border: .25rem solid black;
+    margin-bottom: 0.25rem;
+}
+
+.answer label {
+    display: flex;
+    align-items: center;
+}
+
+.answer label input {
+    margin-right: 0.5rem;
+}
+
+.answerId {
+    font-weight: bold;
+}
+
+.button {
+    width: 10rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+    border: .25rem solid black;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    /** Slight gray color when hovering **/
+    background-color: #ede6e6;
+}

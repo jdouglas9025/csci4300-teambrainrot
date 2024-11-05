@@ -3,9 +3,10 @@
 import {FormEvent, useState} from "react";
 import Button, {ButtonType} from "@/app/components/Button";
 import {QuizItem} from "@/app/interfaces";
+import styles from '../css/QuizTakingPage.module.css'
 
 interface QuizTakingProps {
-    quizItem: QuizItem
+    quizItem: QuizItem // Current item within quiz
 }
 
 export default function QuizTakingPage(props: QuizTakingProps) {
@@ -17,12 +18,12 @@ export default function QuizTakingPage(props: QuizTakingProps) {
     }
 
     return (
-        <div>
-            <p>{props.quizItem.question}</p>
+        <div className={styles.container}>
+            <p className={styles.question}>Q{props.quizItem.id}: {props.quizItem.question}</p>
 
-            <form onSubmit={handleSubmit}>
+            <form className={styles.formContainer} onSubmit={handleSubmit}>
                 {props.quizItem.answers.map(answer => (
-                    <>
+                    <div className={styles.answer} key={answer.id}>
                         <label htmlFor={answer.id}>
                             <input
                                 type="radio"
@@ -31,13 +32,13 @@ export default function QuizTakingPage(props: QuizTakingProps) {
                                 onChange={event => setSelectedOption(event.target.value)}
                             />
 
-                            {answer.id}). {answer.content}
+                            <p><span className={styles.answerId}>{answer.id})</span> {answer.content}</p>
                         </label>
-                    </>
+                    </div>
                 ))}
 
                 {/** No action for button since form will call handler **/}
-                <Button type='submit' buttonType={ButtonType.submit} onClick={() => {
+                <Button className={styles.button} type='submit' buttonType={ButtonType.submit} onClick={() => {
                 }}/>
             </form>
         </div>

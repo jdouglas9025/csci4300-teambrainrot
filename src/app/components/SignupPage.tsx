@@ -3,7 +3,7 @@
 import {FormEvent, useState} from "react";
 import Button, {ButtonType} from "@/app/components/Button";
 import Link from "next/link";
-import styles from '../css/SignupPage.module.css'
+import styles from '../css/SignupLoginPage.module.css'
 
 export default function SignupPage() {
     const [email, setEmail] = useState('')
@@ -20,35 +20,39 @@ export default function SignupPage() {
 
     return (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit}>
-                <div className={styles.inputContainer}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={event => setEmail(event.target.value)}
-                    />
-                </div>
+            <h1 className={styles.name}>Simpli Quiz</h1>
 
-                <div className={styles.inputContainer}>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        type="password"
-                        value={password}
-                        onChange={event => setPassword(event.target.value)}
-                    />
-                </div>
+            <form className={styles.formContainer} onSubmit={handleSubmit}>
+                <div className={styles.fieldsContainer}>
+                    <div className={styles.inputContainer}>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={event => setEmail(event.target.value)}
+                        />
+                    </div>
 
-                <div className={styles.inputContainer}>
-                    <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input
-                        id="confirmPassword"
-                        type="password"
-                        value={confirmPassword}
-                        onChange={event => setConfirmPassword(event.target.value)}
-                    />
+                    <div className={styles.inputContainer}>
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={event => setPassword(event.target.value)}
+                        />
+                    </div>
+
+                    <div className={styles.inputContainer}>
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <input
+                            id="confirmPassword"
+                            type="password"
+                            value={confirmPassword}
+                            onChange={event => setConfirmPassword(event.target.value)}
+                        />
+                    </div>
                 </div>
 
                 {/** No action for button since form will call handler **/}
@@ -56,8 +60,8 @@ export default function SignupPage() {
                 }}/>
             </form>
 
-            <Link href='/login'>
-                <p>Already have an account? <b>Login</b></p>
+            <Link className={styles.link} href='/login'>
+                <p>Already have an account? <span>Login</span></p>
             </Link>
         </div>
     )

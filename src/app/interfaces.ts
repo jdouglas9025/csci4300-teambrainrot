@@ -10,5 +10,41 @@ export interface QuizItem {
     question: string
     answers: Answer[]
     correctAnswerId: string
-    selectedAnswerId: string
+    selectedAnswerId: string | null // May not be specified since user may have not selected an answer
+}
+
+
+// Represents a quiz (contains many items)
+export interface Quiz {
+    id: string // Unique ID
+    name: string // Quiz name
+    quizItems: QuizItem[] // Questions/Answers
+}
+
+
+
+// Temp sample data
+export const sampleQuizItem: QuizItem = {
+    id: '1',
+    question: 'What is HTML?',
+    answers: [
+        {
+            id: "A",
+            content: "A language."
+        },
+        {
+            id: "B",
+            content: "Something else."
+        }
+    ],
+    correctAnswerId: 'A',
+    selectedAnswerId: null
+}
+
+export const sampleQuiz: Quiz = {
+    id: '1',
+    name: 'HTML Quiz',
+    quizItems: [
+        sampleQuizItem
+    ]
 }

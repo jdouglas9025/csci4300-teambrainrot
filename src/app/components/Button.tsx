@@ -24,7 +24,7 @@ export default function Button(props: ButtonProps) {
             content = <p>Login</p>
             break
         case ButtonType.signup:
-            content = <p>Signup</p>
+            content = <p>Sign Up</p>
             break
         case ButtonType.submit:
             content = <p>Submit</p>
