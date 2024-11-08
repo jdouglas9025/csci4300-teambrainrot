@@ -5,12 +5,15 @@ import {caveat} from "@/app/layout";
 import {nunitoSans} from "@/app/layout";
 
 interface QuizProps {
-    name: string;
-    numQuestions: number;
-    desc: string;
+    quiz: {
+        id: number;
+        name: string;
+        numQuestions: number;
+        desc: string;
+    }
 }
 
-export default function Quiz(props: QuizProps) {
+export default function QuizFunc(props: QuizProps) {
 
     /*
     const [quizName, setQuizName] = useState<string>('');
@@ -30,9 +33,9 @@ export default function Quiz(props: QuizProps) {
 
     return (
         <div className={"gridContainer"}>
-            <h2 className={`${caveat.variable} quizName`}>{props.name}</h2>
-            <p className={`${nunitoSans.variable} quizNumQuestions`}>{props.numQuestions} Questions</p>
-            <p className={`${nunitoSans.variable} quizDesc`}>{props.desc}</p>
+            <h2 className={`${caveat.variable} quizName`}>{props.quiz.name}</h2>
+            <p className={`${nunitoSans.variable} quizNumQuestions`}>{props.quiz.numQuestions} Questions</p>
+            <p className={`${nunitoSans.variable} quizDesc`}>{props.quiz.desc}</p>
             <Button buttonType={ButtonType.play} onClick={/*() => router.push('/quizPlay')*/} className={"quizPlay"}/>
             <Button buttonType={ButtonType.gear} onClick={/*() => router.push('/quizSettings')*/} className={"quizSettings"}/>
         </div>
