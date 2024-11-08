@@ -1,0 +1,39 @@
+
+
+.gridContainer {
+    grid-template-areas:
+    'zone1 zone1 zone2 zone2 zone4 zone4'
+    'zone3 zone3 zone3 zone3 zone5 zone5'
+    ;
+}
+
+.quizName {
+    grid-area: zone1;
+    border-top: black solid 5px;
+    border-left: black solid 5px;
+}
+
+.quizNumQuestions {
+    grid-area: zone2;
+    border-top: black solid 5px;
+}
+
+.quizSummary {
+    grid-area: zone3;
+    border-bottom: black solid 5px;
+    border-left: black solid 5px;
+}
+
+.quizPlay {
+    grid-area: zone4;
+    display: block;
+    width: 100%;
+    border: black solid 5px;
+}
+
+.quizSettings {
+    grid-area: zone5;
+    display: block;
+    width: 100%;
+    border: black solid 5px;
+}
