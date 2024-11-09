@@ -1,0 +1,12 @@
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.letter {
+    outline: solid black 5px;
+}
+
+.content {
+    outline: solid black 5px;
+}

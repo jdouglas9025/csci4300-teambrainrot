@@ -1,5 +1,6 @@
 // Page for when user is signed in (quiz selection/home page
 "use client";
+import styles from "@/app/css/HomePage.module.css";
 import {Quiz} from "@/app/interfaces";
 import Quizzes from "@/app/components/Quizzes";
 import Button, {ButtonType} from "@/app/components/Button";
@@ -34,8 +35,8 @@ export default function HomePage(props: HomePageProps) {
     }
 
     return (
-        <div className={"dottedOutline"}>
-            <div className={"navBar"}>
+        <div className={styles.dottedOutline}>
+            <div className={styles.navBar}>
                 <Button buttonType={ButtonType.door} onClick={/*() => router.push('/quizPlay')*/}/>
                 <div>Icon</div>
                 <Button buttonType={ButtonType.gear} onClick={/* Day/Night Function */}/>
@@ -44,6 +45,7 @@ export default function HomePage(props: HomePageProps) {
             <h1 className={`${caveat.variable}`}>Welcome, {props.userName}</h1>
             <h2 className={`${caveat.variable}`}>Choose or Create a Quiz</h2>
             <Quizzes quizzes={quizzes}/>
+            <Button buttonType={ButtonType.add} onClick={}/>
         </div>
     );
 }
