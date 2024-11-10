@@ -1,25 +1,163 @@
 // Page for when user is signed in (quiz selection/home page
-"use client";
+"use client"
+
+import React from "react";
 import styles from "@/app/css/HomePage.module.css";
-import {Quiz} from "@/app/interfaces";
 import Quizzes from "@/app/components/Quizzes";
 import Button, {ButtonType} from "@/app/components/Button";
+import {useRouter} from "next/navigation";
 import {useState} from "react";
-import {caveat} from "@/app/layout";
 
-type Quiz = {
+export type Answer = {
     id: number;
-    name: string;
-    numQuestions: number;
-    desc: string;
+    content: string;
 }
 
-const QUIZZES_INIT: Quiz[] = [
+export type Question = {
+    id: number;
+    question: string;
+    answer: number;
+    options: Answer[];
+}
+
+export type Quiz = {
+    id: number;
+    name: string;
+    desc: string;
+    questions: Question[];
+}
+
+export const QUIZZES_INIT: Quiz[] = [
     {
         id: 1,
-        name: 'defaultQuiz',
-        numQuestions: 0,
-        desc: 'this is the default quiz',
+        name: 'defaultQuiz1',
+        desc: 'This is the default quiz.',
+        questions: [
+            {
+                id: 1,
+                question: "what is default question is this?",
+                answer: 1,
+                options: [
+                    {
+                        id: 1,
+                        content: "default1"
+                    }
+                ]
+            }
+        ],
+    },
+    {
+        id: 2,
+        name: 'defaultQuiz2',
+        desc: 'This quiz has 2 questions.',
+        questions: [
+            {
+                id: 1,
+                question: "what is default question is this?",
+                answer: 2,
+                options: [
+                    {
+                        id: 1,
+                        content: "default1"
+                    },
+                    {
+                        id: 2,
+                        content: "default2"
+                    },
+                    {
+                        id: 3,
+                        content: "default3"
+                    },
+                ]
+            },
+            {
+                id: 2,
+                question: "what does this show?",
+                answer: 3,
+                options: [
+                    {
+                        id: 1,
+                        content: "default1"
+                    },
+                    {
+                        id: 2,
+                        content: "default2"
+                    },
+                    {
+                        id: 3,
+                        content: "The limit before adding goes away is 3 options."
+                    },
+                ]
+            }
+        ],
+    },
+    {
+        id: 3,
+        name: 'defaultQuiz3',
+        desc: 'This quiz shows full functionality of the quiz edit component.',
+        questions: [
+            {
+                id: 1,
+                question: "what is default question is this?",
+                answer: 2,
+                options: [
+                    {
+                        id: 1,
+                        content: "default1"
+                    },
+                    {
+                        id: 2,
+                        content: "default2"
+                    },
+                    {
+                        id: 3,
+                        content: "default3"
+                    },
+                ]
+            },
+            {
+                id: 2,
+                question: "what does this show?",
+                answer: 3,
+                options: [
+                    {
+                        id: 1,
+                        content: "default1"
+                    },
+                    {
+                        id: 2,
+                        content: "default2"
+                    },
+                    {
+                        id: 3,
+                        content: "The limit before adding goes away is 3 options."
+                    },
+                ]
+            },
+            {
+                id: 3,
+                question: "what does this show?",
+                answer: 4,
+                options: [
+                    {
+                        id: 1,
+                        content: "default1"
+                    },
+                    {
+                        id: 2,
+                        content: "default2"
+                    },
+                    {
+                        id: 3,
+                        content: "default3"
+                    },
+                    {
+                        id: 4,
+                        content: "Adding goes away at 4 options."
+                    },
+                ]
+            }
+        ],
     },
 ];
 
@@ -28,24 +166,26 @@ interface HomePageProps {
 }
 
 export default function HomePage(props: HomePageProps) {
+    const router = useRouter();
+
     const[quizzes, setQuizzes] = useState(QUIZZES_INIT);
 
     const addQuizHandler = (quiz: Quiz) => {
         setQuizzes((prevQuizzes) => [quiz, ...prevQuizzes]);
     }
 
-    return (
+    return(
         <div className={styles.dottedOutline}>
             <div className={styles.navBar}>
-                <Button buttonType={ButtonType.door} onClick={/*() => router.push('/quizPlay')*/}/>
-                <div>Icon</div>
-                <Button buttonType={ButtonType.gear} onClick={/* Day/Night Function */}/>
+                <Button className={styles.logOut} buttonType={ButtonType.door} onClick={() => router.push('/login')}/>
+                <h1>Icon</h1>
+                <Button className={styles.userPref} buttonType={ButtonType.gear} onClick={() => {}/* Day/Night Function */}/>
                 {/* Need to change this button to a day/night */}
             </div>
-            <h1 className={`${caveat.variable}`}>Welcome, {props.userName}</h1>
-            <h2 className={`${caveat.variable}`}>Choose or Create a Quiz</h2>
+            <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {props.userName}</h1>
+            <h2 className={styles.fontCaveat + " " + styles.header}>Choose or Create a Quiz</h2>
             <Quizzes quizzes={quizzes}/>
-            <Button buttonType={ButtonType.add} onClick={}/>
+            <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={() => {}}/>
         </div>
     );
 }

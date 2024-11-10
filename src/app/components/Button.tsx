@@ -7,7 +7,7 @@ import doorLightIcon from '../icons/DoorLight.svg'
 import Image from "next/image";
 
 export enum ButtonType {
-    login, add, play, gear, signup, door, done, submit
+    login, add, play, gear, signup, door, done, submit, save
 }
 
 interface ButtonProps {
@@ -31,6 +31,9 @@ export default function Button(props: ButtonProps) {
             break
         case ButtonType.done:
             content = <p>Done</p>
+            break
+        case ButtonType.save:
+            content = <p>Save</p>
             break
         case ButtonType.add:
             content = <Image src={addLightIcon} alt={'Add icon'}></Image>

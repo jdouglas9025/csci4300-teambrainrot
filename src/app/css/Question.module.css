@@ -1,0 +1,35 @@
+.questionContainer {
+    width: 100%;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionInput {
+    border: solid black 2px;
+    margin-bottom: .5em;
+    padding: .2em .4em;
+    min-height: 2em;
+    max-height: 5em;
+    font-family: NunitoSans, sans-serif;
+}
+
+.questionHeader {
+    font-family: Caveat, sans-serif;
+    font-size: 3em;
+}
+
+.addNewContainer {
+    display: flex;
+    flex-direction: row;
+    font-family: NunitoSans, sans-serif;
+    font-size: 1.5em;
+}
+
+.addAnswerButton {
+    width: 5em;
+    margin-right: .5em;
+
+}

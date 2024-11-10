@@ -1,5 +1,6 @@
 import Quiz from "@/app/components/Quiz";
 import QuizFunc from "@/app/components/Quiz";
+import styles from "@/app/css/Quizzes.module.css"
 
 interface quizzesProps{
     quizzes: Quiz[];
@@ -7,9 +8,9 @@ interface quizzesProps{
 
 export default function Quizzes({quizzes}: quizzesProps) {
     return (
-        <ul>
+        <ul className={styles.quizList}>
             {quizzes.map((quizPassed: Quiz) =>
-                <li key={quizPassed.id}>
+                <li key={quizPassed.id} className={styles.quizItem}>
                     <QuizFunc quiz={quizPassed}/>
                 </li>
             )}

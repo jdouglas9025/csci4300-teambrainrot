@@ -1,6 +1,4 @@
 import styles from "../css/Answer.module.css";
-import Button from "@/app/components/Button";
-
 
 interface AnswerProps {
     answer: {
@@ -32,8 +30,8 @@ export default function Answer({answer}: AnswerProps) {
 
     return (
         <div className={styles.flexContainer}>
-            <label className={styles.letter}>{questionLetter})</label>
-            <input className={styles.content} value={answer.content} placeholder={"Enter Answer"}/>
+            <label className={styles.letter} for={answer.id.toString()} >{questionLetter})</label>
+            <input className={styles.content} id={answer.id.toString()} name={answer.id.toString()} value={answer.content} placeholder={"Enter Answer"}/>
         </div>
     );
 }

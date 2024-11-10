@@ -1,7 +1,27 @@
-.topBar {
+.totalContainer {
+    padding: 2em;
+}
 
+.topBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hrSeparate {
+    width: 60%;
+    border: solid black 5px;
+    margin: 2em 0;
+}
 
+.submitButton {
+    border: solid black 5px;
+    padding: .75em 2em;
+    font-size: 2.5em;
 }

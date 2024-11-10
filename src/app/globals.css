@@ -15,6 +15,20 @@
 /*  }*/
 /*}*/
 
+@font-face {
+  font-family: 'Caveat';
+  src: url("./fonts/Caveat.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'NunitoSans';
+  src: url("./fonts/NunitoSans.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

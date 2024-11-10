@@ -4,14 +4,38 @@
     align-items: center;
     border: dashed black 5px;
     margin: 2em;
+    padding: 1em;
 }
 
 .navBar {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: 4em;
+}
+
+.welcome {
+    margin-top: .5em;
+    font-size: 4.5em;
 }
 
 .header {
+    font-size: 3em;
+}
+
+.fontCaveat {
+    font-family: 'Caveat', sans-serif;
+}
+
+.logOut {
+
+}
+
+.userPref {
+    outline: none;
+}
+
+.newQuiz {
 
 }

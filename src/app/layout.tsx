@@ -13,12 +13,12 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-export const caveat = localFont({
+const caveat = localFont({
   src: "./fonts/Caveat.ttf",
   variable: "--font-caveat",
   weight: "100 900",
 });
-export const nunitoSans = localFont({
+const nunitoSans = localFont({
   src: "./fonts/NunitoSans.ttf",
   variable: "--font-nunito-sans",
   weight: "100 900",
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${caveat.variable} ${nunitoSans.variable} antialiased`}
       >
         {children}
       </body>

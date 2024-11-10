@@ -1,12 +1,21 @@
 .flexContainer {
     display: flex;
     flex-direction: row;
+    margin-bottom: .5em;
 }
 
 .letter {
-    outline: solid black 5px;
+    border: solid black 3px;
+    padding: .2em .4em;
+    font-family: Caveat, sans-serif;
+    font-size: 1.75em;
+    width: 2em;
 }
 
 .content {
-    outline: solid black 5px;
+    border: solid black 2px;
+    padding: 1em;
+    margin-left: .5em;
+    width: 100%;
+    font-family: NunitoSans;
 }

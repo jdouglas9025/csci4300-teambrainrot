@@ -3,19 +3,19 @@ import styles from "@/app/css/Quiz.module.css";
 import Button, {ButtonType} from "@/app/components/Button";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
-import {caveat} from "@/app/layout";
-import {nunitoSans} from "@/app/layout";
+import {Question} from "@/app/components/HomePage";
 
 interface QuizProps {
     quiz: {
         id: number;
         name: string;
-        numQuestions: number;
         desc: string;
+        questions: Question[];
     }
 }
 
 export default function QuizFunc(props: QuizProps) {
+    const router = useRouter();
 
     /*
     const [quizName, setQuizName] = useState<string>('');
@@ -35,11 +35,11 @@ export default function QuizFunc(props: QuizProps) {
 
     return (
         <div className={styles.gridContainer}>
-            <h2 className={`${caveat.variable}` + styles.quizName}>{props.quiz.name}</h2>
-            <p className={`${nunitoSans.variable}` + styles.quizNumQuestions}>{props.quiz.numQuestions} Questions</p>
-            <p className={`${nunitoSans.variable}` + styles.quizDesc}>{props.quiz.desc}</p>
-            <Button buttonType={ButtonType.play} onClick={/*() => router.push('/quizPlay')*/} className={styles.quizPlay}/>
-            <Button buttonType={ButtonType.gear} onClick={/*() => router.push('/quizSettings')*/} className={styles.quizSettings}/>
+            <h2 className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</h2>
+            <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.questions.length} Questions</p>
+            <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.desc}</p>
+            <Button buttonType={ButtonType.play} onClick={() => {}/*() => router.push('/quizPlay')*/} className={styles.quizPlay}/>
+            <Button buttonType={ButtonType.gear} onClick={() => router.push('/quizeditpage')} className={styles.quizSettings}/>
         </div>
     )
 }

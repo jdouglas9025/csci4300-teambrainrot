@@ -1,6 +1,6 @@
 import LoginPage from "@/app/components/LoginPage";
 
-export default function Signup() {
+export default function callLogin() {
     return (
         <div>
             <LoginPage></LoginPage>

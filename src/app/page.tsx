@@ -7,7 +7,6 @@ import {sampleQuiz} from "@/app/interfaces";
 
 export default function Home() {
     return (
-        <div>
-        </div>
+        <LoginPage/>
   );
 }

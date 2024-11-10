@@ -1,11 +1,15 @@
 "use client"
 
-import {FormEvent, useState} from "react";
+import React, {FormEvent, useState} from "react";
 import Button, {ButtonType} from "@/app/components/Button";
 import Link from "next/link";
 import styles from '../css/SignupLoginPage.module.css'
+import {useRouter} from "next/navigation";
 
 export default function LoginPage() {
+
+    const router = useRouter();
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -43,8 +47,8 @@ export default function LoginPage() {
                 </div>
 
                 {/** No action for button since form will call handler **/}
-                <Button className={styles.button} type='submit' buttonType={ButtonType.login} onClick={() => {
-                }}/>
+                <Button className={styles.button} type='submit' buttonType={ButtonType.login} onClick={() => router.push('/homepage')}/>
+                {/* Ben - Made it so that the button goes to HomePage for a default to test for now */}
             </form>
 
             <Link className={styles.link} href='/signup'>
