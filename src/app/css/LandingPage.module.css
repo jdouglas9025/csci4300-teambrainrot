@@ -1,0 +1,16 @@
+
+/** Common styling for button **/
+.button {
+    width: 10rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+    border: .25rem solid black;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    /** Slight gray color when hovering **/
+    background-color: #ede6e6;
+}

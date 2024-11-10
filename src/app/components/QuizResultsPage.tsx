@@ -1,6 +1,6 @@
 "use client"
 
-import {Quiz, QuizItem} from "@/app/interfaces";
+import {QuizItem} from "@/app/interfaces";
 import checkMark from '../icons/CheckMarkLight.svg'
 import xMark from '../icons/XMarkLight.svg'
 import home from '../icons/HomeLight.svg'
@@ -9,12 +9,12 @@ import styles from '../css/QuizResultsPage.module.css'
 import Link from "next/link";
 
 interface QuizResultsProps {
-    quiz: Quiz
+    quizItems: QuizItem[]
 }
 
 export default function QuizResultsPage(props: QuizResultsProps) {
-    const correctQuestions = props.quiz.quizItems.filter(quizItem => quizItem.selectedAnswerId === quizItem.correctAnswerId)
-    const incorrectQuestions = props.quiz.quizItems.filter(quizItem => quizItem.selectedAnswerId !== quizItem.correctAnswerId)
+    const correctQuestions = props.quizItems.filter(quizItem => quizItem.selectedAnswerId === quizItem.correctAnswerId)
+    const incorrectQuestions = props.quizItems.filter(quizItem => quizItem.selectedAnswerId !== quizItem.correctAnswerId)
 
     return (
         <>
@@ -24,7 +24,7 @@ export default function QuizResultsPage(props: QuizResultsProps) {
 
             <div className={styles.container}>
                 <div className={styles.results}>
-                    <p className={styles.score}>{correctQuestions.length / (correctQuestions.length + incorrectQuestions.length) * 100}%</p>
+                    <p className={styles.score}>{Math.round(correctQuestions.length / (correctQuestions.length + incorrectQuestions.length) * 100)}%</p>
                     <p>{correctQuestions.length}/{correctQuestions.length + incorrectQuestions.length} Correct</p>
 
                     <p className={styles.incorrectQuestions}>{incorrectQuestions.length == 0 ? 'Great job!' : 'Incorrect Questions'}</p>

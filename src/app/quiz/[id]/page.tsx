@@ -11,6 +11,7 @@ export interface InProgressQuizProps {
     params: {id: string} // Dynamic ID passed by NextJS
 }
 
+// Wrapper for in-progress quiz -- loads each item in a quiz taking page
 export default function InProgressQuizWrapper(props: InProgressQuizProps) {
     // Load data from database using id
     // Hardcode for now
@@ -45,10 +46,10 @@ export default function InProgressQuizWrapper(props: InProgressQuizProps) {
         <div>
             {quizCompleted ? (
                 /** Load results page **/
-                <QuizResultsPage quiz={tempProps.quiz}></QuizResultsPage>
+                <QuizResultsPage quizItems={quizItems}></QuizResultsPage>
             ) : (
                 /** Load the current quiz item **/
-                <QuizTakingPage quizItem={tempProps.quiz.quizItems[index]} submitHandler={submitHandler}></QuizTakingPage>
+                <QuizTakingPage quizItem={quizItems[index]} submitHandler={submitHandler}></QuizTakingPage>
             )}
         </div>
     );
