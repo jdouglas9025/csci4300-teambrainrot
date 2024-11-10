@@ -4,6 +4,7 @@ import Button, {ButtonType} from "@/app/components/Button";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {Question} from "@/app/components/HomePage";
+import Link from "next/link";
 
 interface QuizProps {
     quiz: {
@@ -38,11 +39,19 @@ export default function QuizFunc(props: QuizProps) {
             <h2 className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</h2>
             <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.questions.length} Questions</p>
             <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.desc}</p>
-            <Button buttonType={ButtonType.play} onClick={() => {}/*() => router.push('/quizPlay')*/} className={styles.quizPlay}/>
+            {/** Should we use link over router.push? I changed code and pasted the old version below **/}
+            <Link href={'/quiz/' + props.quiz.id}> {/** Use quiz id as slug **/}
+                <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
+            </Link>
+
             <Button buttonType={ButtonType.gear} onClick={() => router.push('/quizeditpage')} className={styles.quizSettings}/>
         </div>
     )
 }
+
+/*
+    * <Button buttonType={ButtonType.play} onClick={() => router.push('/quizPlay')} className={styles.quizPlay}/>
+*/
 
 /* Notes:
     * Get rid of the comments around the router when we have those components set up.

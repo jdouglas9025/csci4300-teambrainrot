@@ -61,3 +61,8 @@
 .answerId {
     font-weight: bold;
 }
+
+.homeImage {
+    width: 2.5rem;
+    margin: 1rem;
+}

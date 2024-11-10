@@ -4,9 +4,13 @@ import {FormEvent, useState} from "react";
 import Button, {ButtonType} from "@/app/components/Button";
 import {QuizItem} from "@/app/interfaces";
 import styles from '../css/QuizTakingPage.module.css'
+import Image from "next/image";
+import home from "@/app/icons/HomeLight.svg";
+import Link from "next/link";
 
 interface QuizTakingProps {
     quizItem: QuizItem // Current item within quiz
+    submitHandler: (selectedAnswerId: string) => void
 }
 
 export default function QuizTakingPage(props: QuizTakingProps) {
@@ -14,33 +18,39 @@ export default function QuizTakingPage(props: QuizTakingProps) {
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault()
-        console.log('Answered...')
+        props.submitHandler(selectedOption) // Store the selected option
     }
 
     return (
-        <div className={styles.container}>
-            <p className={styles.question}>Q{props.quizItem.id}: {props.quizItem.question}</p>
+        <>
+            <Link href={'/homepage'}>
+                <Image src={home} alt={'A home icon.'} className={styles.homeImage}/>
+            </Link>
 
-            <form className={styles.formContainer} onSubmit={handleSubmit}>
-                {props.quizItem.answers.map(answer => (
-                    <div className={styles.answer} key={answer.id}>
-                        <label htmlFor={answer.id}>
-                            <input
-                                type="radio"
-                                value={answer.content}
-                                checked={selectedOption === answer.content}
-                                onChange={event => setSelectedOption(event.target.value)}
-                            />
+            <div className={styles.container}>
+                <p className={styles.question}>Q{props.quizItem.id}: {props.quizItem.question}</p>
 
-                            <p><span className={styles.answerId}>{answer.id})</span> {answer.content}</p>
-                        </label>
-                    </div>
-                ))}
+                <form className={styles.formContainer} onSubmit={handleSubmit}>
+                    {props.quizItem.answers.map(answer => (
+                        <div className={styles.answer} key={answer.id}>
+                            <label htmlFor={answer.id}>
+                                <input
+                                    type="radio"
+                                    value={answer.id}
+                                    checked={selectedOption === answer.id}
+                                    onChange={event => setSelectedOption(event.target.value)}
+                                />
 
-                {/** No action for button since form will call handler **/}
-                <Button className={styles.button} type='submit' buttonType={ButtonType.submit} onClick={() => {
-                }}/>
-            </form>
-        </div>
+                                <p><span className={styles.answerId}>{answer.id})</span> {answer.content}</p>
+                            </label>
+                        </div>
+                    ))}
+
+                    {/** No action for button since form will call handler **/}
+                    <Button className={styles.button} type='submit' buttonType={ButtonType.submit} onClick={() => {
+                    }}/>
+                </form>
+            </div>
+        </>
     )
 }
