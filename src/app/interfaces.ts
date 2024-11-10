@@ -1,6 +1,7 @@
 // Store common interfaces
 interface Answer {
     id: string, // E.g., A B C D
+    // Maybe add value instead if ID assigned by DB?
     content: string
 }
 
@@ -45,6 +46,46 @@ export const sampleQuiz: Quiz = {
     id: '1',
     name: 'HTML Quiz',
     quizItems: [
-        sampleQuizItem
+        sampleQuizItem,
+        {
+            id: '2',
+            question: 'Do you love Web Programming?',
+            answers: [
+                {
+                    id: "A",
+                    content: "Yes."
+                },
+                {
+                    id: "B",
+                    content: "Maybe."
+                },
+                {
+                    id: "C",
+                    content: "Nope."
+                }
+            ],
+            correctAnswerId: 'A',
+            selectedAnswerId: null
+        },
+        {
+            id: '3',
+            question: 'Do you love UGA',
+            answers: [
+                {
+                    id: "A",
+                    content: "Yes."
+                },
+                {
+                    id: "B",
+                    content: "Maybe."
+                },
+                {
+                    id: "C",
+                    content: "Nope."
+                }
+            ],
+            correctAnswerId: 'A',
+            selectedAnswerId: null
+        }
     ]
 }

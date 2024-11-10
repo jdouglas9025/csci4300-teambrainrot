@@ -58,3 +58,8 @@
     /** Slight gray color when hovering **/
     background-color: #ede6e6;
 }
+
+.homeImage {
+    width: 2.5rem;
+    margin: 1rem;
+}

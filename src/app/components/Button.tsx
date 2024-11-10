@@ -14,7 +14,7 @@ interface ButtonProps {
     className?: string
     type?: 'button' | 'submit' | 'reset' // Type of button (e.g., submit, standard button with custom action)
     buttonType: ButtonType
-    onClick: () => void // Action to take when this button is clicked
+    onClick?: () => void // Action to take when this button is clicked (or none if not needed)
 }
 
 export default function Button(props: ButtonProps) {
