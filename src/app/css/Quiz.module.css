@@ -3,8 +3,8 @@
 .gridContainer {
     display: grid;
     grid-template-areas:
-    'zone1 zone1 zone2 zone2 zone4 zone4'
-    'zone3 zone3 zone3 zone3 zone5 zone5'
+    'zone0 zone1 zone1 zone2 zone2 zone4 zone4'
+    'zone0 zone3 zone3 zone3 zone3 zone5 zone5'
     ;
     justify-content: center;
     width: 100%;
@@ -35,6 +35,10 @@
     grid-area: zone5;
     display: block;
     width: 100%;
+}
+
+.quizImage {
+    grid-area: zone0;
 }
 
 .fontCaveat {
