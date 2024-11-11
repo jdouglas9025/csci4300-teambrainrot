@@ -4,18 +4,32 @@ import {FormEvent, useState} from "react";
 import Button, {ButtonType} from "@/app/components/Button";
 import Link from "next/link";
 import styles from '../css/SignupLoginPage.module.css'
+import {useRouter} from "next/navigation";
 
 export default function SignupPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+    const router = useRouter()
+
     function handleSubmit(event: FormEvent) {
         event.preventDefault()
 
-        // Check passwords...
+        // Save info to db...
+        console.log(email)
+        console.log(password)
+        console.log(confirmPassword)
 
-        console.log('Logged in...')
+        // Reset fields
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
+
+        alert('Successfully created an account. Please login using the provided information.')
+
+        // Redirect user to login page
+        router.push('/login')
     }
 
     return (
@@ -56,8 +70,7 @@ export default function SignupPage() {
                 </div>
 
                 {/** No action for button since form will call handler **/}
-                <Button className={styles.button} type='submit' buttonType={ButtonType.signup} onClick={() => {
-                }}/>
+                <Button className={styles.button} type='submit' buttonType={ButtonType.signup}/>
             </form>
 
             <Link className={styles.link} href='/login'>

@@ -7,16 +7,24 @@ import styles from '../css/SignupLoginPage.module.css'
 import {useRouter} from "next/navigation";
 
 export default function LoginPage() {
-
-    const router = useRouter();
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const router = useRouter()
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault()
 
-        console.log('Logged in...')
+        // Save info to db...
+        console.log(email)
+        console.log(password)
+
+        // Reset fields
+        setEmail('')
+        setPassword('')
+
+        // Redirect user to homepage
+        router.push('/homepage')
     }
 
     return (
@@ -47,8 +55,7 @@ export default function LoginPage() {
                 </div>
 
                 {/** No action for button since form will call handler **/}
-                <Button className={styles.button} type='submit' buttonType={ButtonType.login} onClick={() => router.push('/homepage')}/>
-                {/* Ben - Made it so that the button goes to HomePage for a default to test for now */}
+                <Button className={styles.button} type='submit' buttonType={ButtonType.login}/>
             </form>
 
             <Link className={styles.link} href='/signup'>
