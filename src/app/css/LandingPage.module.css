@@ -1,7 +1,82 @@
+/** CSS for both sign up and login pages since same structure **/
 
-/** Common styling for button **/
+.background {
+    padding: 1.5rem;
+    background-image: url("../images/Background.svg");
+    background-size: 50rem;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /** Align in center **/
+    margin: 1rem auto;
+    text-transform: uppercase;
+}
+
+.container h1 {
+    /** Ensures title stays above background **/
+    background-color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    /** Heading font **/
+    font-family: 'Caveat', sans-serif;
+}
+
+.container h2 {
+    /** Ensures title stays above background **/
+    background-color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    /** Heading font **/
+    font-family: 'Caveat', sans-serif;
+}
+
+.formContainer {
+    /** Ensures form stays above background **/
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /** Regular text font **/
+    font-family: 'NunitoSans', sans-serif;
+}
+
+.fieldsContainer {
+    padding: 1rem;
+    border: .25rem solid black;
+}
+
+/** Container for label and input box pairs **/
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    margin-bottom: 1rem;
+}
+
+.inputContainer label {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.inputContainer input {
+    /** Take full width of container **/
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: .25rem solid black;
+}
+
 .button {
-    width: 10rem;
+    background-color: white;
+    width: 15vw;
     padding: 1rem;
     margin: 1rem 0;
     font-weight: bold;
@@ -13,4 +88,26 @@
 .button:hover {
     /** Slight gray color when hovering **/
     background-color: #ede6e6;
+}
+
+.link {
+    background-color: white;
+    /** Slightly smaller font **/
+    font-size: 0.9rem;
+    font-family: 'NunitoSans', sans-serif;
+}
+
+/** Styles for Login/Signup text in sentence **/
+.link span {
+    font-weight: bold;
+}
+
+.link span:hover {
+    /** Slight gray color when hovering **/
+    color: #ede6e6;
+}
+
+.logo {
+    background-color: white;
+    width: 15rem;
 }
