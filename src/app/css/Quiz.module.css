@@ -48,3 +48,8 @@
 .fontNunito {
     font-family: 'NunitoSans', sans-serif;
 }
+
+.link {
+    display: block;
+    width: 100%;
+}

@@ -37,5 +37,13 @@
 }
 
 .newQuiz {
+    border: solid black 5px;
+    padding: .5em 6em;
+    margin-bottom: 2em;
+}
 
+.logo {
+    width: 40%;
+    display: block;
+    margin: 0 auto;
 }

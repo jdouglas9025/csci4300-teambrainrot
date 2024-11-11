@@ -8,6 +8,7 @@ import Button, {ButtonType} from "@/app/components/Button";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
+import Logo from "@/app/components/Logo";
 
 export type Answer = {
     id: number;
@@ -195,7 +196,7 @@ export default function HomePage(props: HomePageProps) {
                 <Link href={'/login'}>
                     <Button className={styles.logOut} buttonType={ButtonType.door}/>
                 </Link>
-                <h1>Icon</h1>
+                <Logo className={styles.logo}/>
                 <Link href={'/settingspage'}>
                     <Button className={styles.userPref} buttonType={ButtonType.gear} onClick={() => {}/* Day/Night Function */}/>
                 </Link>

@@ -42,11 +42,10 @@ export default function QuizFunc(props: QuizProps) {
             <h2 className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</h2>
             <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.questions.length} Questions</p>
             <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.desc}</p>
-            {/** Should we use link over router.push? I changed code and pasted the old version below **/}
-            <Link href={'/quiz/' + props.quiz.id}> {/** Use quiz id as slug **/}
+            <Link className={styles.link} href={'/quiz/' + props.quiz.id}> {/** Use quiz id as slug **/}
                 <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
             </Link>
-            <Link href={'/quizeditpage'}>
+            <Link className={styles.link} href={'/quizeditpage'}>
                 <Button buttonType={ButtonType.gear} className={styles.quizSettings}/>
             </Link>
         </div>
