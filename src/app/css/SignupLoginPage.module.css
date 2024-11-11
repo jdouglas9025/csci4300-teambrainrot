@@ -1,5 +1,14 @@
 /** CSS for both sign up and login pages since same structure **/
 
+.background {
+    padding: 1rem;
+    background-image: url("../images/Background.svg");
+    background-size: 50rem;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -10,6 +19,8 @@
 }
 
 .container h1 {
+    /** Ensures title stays above background **/
+    background-color: white;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -18,6 +29,8 @@
 }
 
 .formContainer {
+    /** Ensures form stays above background **/
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;

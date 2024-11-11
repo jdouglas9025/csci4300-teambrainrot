@@ -28,39 +28,41 @@ export default function LoginPage() {
     }
 
     return (
-        <div className={styles.container}>
-            <h1 className={styles.name}>Simpli Quiz</h1>
+        <div className={styles.background}>
+            <div className={styles.container}>
+                <h1 className={styles.name}>Simpli Quiz</h1>
 
-            <form className={styles.formContainer} onSubmit={handleSubmit}>
-                <div className={styles.fieldsContainer}>
-                    <div className={styles.inputContainer}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={event => setEmail(event.target.value)}
-                        />
+                <form className={styles.formContainer} onSubmit={handleSubmit}>
+                    <div className={styles.fieldsContainer}>
+                        <div className={styles.inputContainer}>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={event => setEmail(event.target.value)}
+                            />
+                        </div>
+
+                        <div className={styles.inputContainer}>
+                            <label htmlFor="password">Password</label>
+                            <input
+                                id="password"
+                                type="password"
+                                value={password}
+                                onChange={event => setPassword(event.target.value)}
+                            />
+                        </div>
                     </div>
 
-                    <div className={styles.inputContainer}>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={event => setPassword(event.target.value)}
-                        />
-                    </div>
-                </div>
+                    {/** No action for button since form will call handler **/}
+                    <Button className={styles.button} type='submit' buttonType={ButtonType.login}/>
+                </form>
 
-                {/** No action for button since form will call handler **/}
-                <Button className={styles.button} type='submit' buttonType={ButtonType.login}/>
-            </form>
-
-            <Link className={styles.link} href='/signup'>
-                <p>Don&#39;t have an account? <span>Sign up</span></p>
-            </Link>
+                <Link className={styles.link} href='/signup'>
+                    <p>Don&#39;t have an account? <span>Sign up</span></p>
+                </Link>
+            </div>
         </div>
     )
 }

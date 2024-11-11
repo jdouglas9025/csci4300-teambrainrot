@@ -33,49 +33,51 @@ export default function SignupPage() {
     }
 
     return (
-        <div className={styles.container}>
-            <h1 className={styles.name}>Simpli Quiz</h1>
+        <div className={styles.background}>
+            <div className={styles.container}>
+                <h1 className={styles.name}>Simpli Quiz</h1>
 
-            <form className={styles.formContainer} onSubmit={handleSubmit}>
-                <div className={styles.fieldsContainer}>
-                    <div className={styles.inputContainer}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={event => setEmail(event.target.value)}
-                        />
+                <form className={styles.formContainer} onSubmit={handleSubmit}>
+                    <div className={styles.fieldsContainer}>
+                        <div className={styles.inputContainer}>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={event => setEmail(event.target.value)}
+                            />
+                        </div>
+
+                        <div className={styles.inputContainer}>
+                            <label htmlFor="password">Password</label>
+                            <input
+                                id="password"
+                                type="password"
+                                value={password}
+                                onChange={event => setPassword(event.target.value)}
+                            />
+                        </div>
+
+                        <div className={styles.inputContainer}>
+                            <label htmlFor="confirmPassword">Confirm Password</label>
+                            <input
+                                id="confirmPassword"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={event => setConfirmPassword(event.target.value)}
+                            />
+                        </div>
                     </div>
 
-                    <div className={styles.inputContainer}>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={event => setPassword(event.target.value)}
-                        />
-                    </div>
+                    {/** No action for button since form will call handler **/}
+                    <Button className={styles.button} type='submit' buttonType={ButtonType.signup}/>
+                </form>
 
-                    <div className={styles.inputContainer}>
-                        <label htmlFor="confirmPassword">Confirm Password</label>
-                        <input
-                            id="confirmPassword"
-                            type="password"
-                            value={confirmPassword}
-                            onChange={event => setConfirmPassword(event.target.value)}
-                        />
-                    </div>
-                </div>
-
-                {/** No action for button since form will call handler **/}
-                <Button className={styles.button} type='submit' buttonType={ButtonType.signup}/>
-            </form>
-
-            <Link className={styles.link} href='/login'>
-                <p>Already have an account? <span>Login</span></p>
-            </Link>
+                <Link className={styles.link} href='/login'>
+                    <p>Already have an account? <span>Login</span></p>
+                </Link>
+            </div>
         </div>
     )
 }
