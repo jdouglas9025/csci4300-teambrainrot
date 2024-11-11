@@ -30,7 +30,7 @@ export default function Answer({answer}: AnswerProps) {
 
     return (
         <div className={styles.flexContainer}>
-            <label className={styles.letter} for={answer.id.toString()} >{questionLetter})</label>
+            <label className={styles.letter} for={answer.id.toString()} >{questionLetter}</label>
             <input className={styles.content} id={answer.id.toString()} name={answer.id.toString()} value={answer.content} placeholder={"Enter Answer"}/>
         </div>
     );

@@ -1,0 +1,55 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #eaeaea;
+    height: 60px;
+  }
+  
+  .iconContainer {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .titleContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    cursor: default;
+  }
+  
+  .title[onClick] {
+    cursor: pointer;
+  }
+  
+  .titleInput {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    border: none;
+    border-bottom: 2px solid #0070f3;
+    background: transparent;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.25rem;
+    outline: none;
+  }
+  
+  .titleInput:focus {
+    border-bottom-color: #0050d3;
+  }

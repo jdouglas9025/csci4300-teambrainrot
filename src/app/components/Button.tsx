@@ -9,7 +9,7 @@ import backArrowLightIcon from '../icons/BackArrowLight.svg'
 import Image from "next/image";
 
 export enum ButtonType {
-    login, add, play, gear, signup, door, done, submit, save, home, backArrow
+    login, add, edit, play, gear, signup, door, done, submit, save, home, backArrow
 }
 
 interface ButtonProps {
@@ -36,6 +36,9 @@ export default function Button(props: ButtonProps) {
             break
         case ButtonType.save:
             content = <p>Save</p>
+            break
+        case ButtonType.edit:
+            content = <p>Edit Quiz</p>
             break
         case ButtonType.add:
             content = <Image src={addLightIcon} alt={'Add icon'}></Image>

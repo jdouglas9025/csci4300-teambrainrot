@@ -44,7 +44,7 @@ export default function QuizFunc(props: QuizProps) {
                 <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
             </Link>
 
-            <Button buttonType={ButtonType.gear} onClick={() => router.push('/quizeditpage')} className={styles.quizSettings}/>
+            <Button buttonType={ButtonType.gear} onClick={() => router.push('/settingspage')} className={styles.quizSettings}/>
         </div>
     )
 }

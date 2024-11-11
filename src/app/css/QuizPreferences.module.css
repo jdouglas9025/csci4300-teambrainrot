@@ -1,0 +1,62 @@
+.container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-family: 'Caveat', sans-serif;
+}
+
+.separator {
+    border: none;
+    border-top: 2px solid #000;
+    margin: 1rem 0;
+}
+
+.preference {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 1rem 0;
+}
+
+.toggle {
+    appearance: none;
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background-color: #e4e4e7;
+    border-radius: 12px;
+    transition: background-color 0.2s;
+}
+
+.toggle:checked {
+    background-color: black;
+}
+
+.toggle::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: white;
+    transition: transform 0.2s;
+}
+
+.toggle:checked::before {
+    transform: translateX(20px);
+}
+
+.label {
+    font-size: 1rem;
+    color: #222;
+}
