@@ -46,8 +46,9 @@ export default function QuizFunc(props: QuizProps) {
             <Link href={'/quiz/' + props.quiz.id}> {/** Use quiz id as slug **/}
                 <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
             </Link>
-
-            <Button buttonType={ButtonType.gear} onClick={() => router.push('/settingspage')} className={styles.quizSettings}/>
+            <Link href={'/quizeditpage'}>
+                <Button buttonType={ButtonType.gear} className={styles.quizSettings}/>
+            </Link>
         </div>
     )
 }

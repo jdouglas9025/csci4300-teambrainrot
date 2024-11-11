@@ -192,9 +192,13 @@ export default function HomePage(props: HomePageProps) {
     return(
         <div className={styles.dottedOutline}>
             <div className={styles.navBar}>
-                <Link href={'/login'}><Button className={styles.logOut} buttonType={ButtonType.door}/></Link>
+                <Link href={'/login'}>
+                    <Button className={styles.logOut} buttonType={ButtonType.door}/>
+                </Link>
                 <h1>Icon</h1>
-                <Button className={styles.userPref} buttonType={ButtonType.gear} onClick={() => {}/* Day/Night Function */}/>
+                <Link href={'/settingspage'}>
+                    <Button className={styles.userPref} buttonType={ButtonType.gear} onClick={() => {}/* Day/Night Function */}/>
+                </Link>
                 {/* Need to change this button to a day/night */}
             </div>
             <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {props.userName}</h1>
