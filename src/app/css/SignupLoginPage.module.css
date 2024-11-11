@@ -1,7 +1,7 @@
 /** CSS for both sign up and login pages since same structure **/
 
 .background {
-    padding: 1rem;
+    padding: 1.5rem;
     background-image: url("../images/Background.svg");
     background-size: 50rem;
     background-position: center;
@@ -80,6 +80,7 @@
 }
 
 .link {
+    background-color: white;
     /** Slightly smaller font **/
     font-size: 0.9rem;
     font-family: 'NunitoSans', sans-serif;
@@ -93,4 +94,9 @@
 .link span:hover {
     /** Slight gray color when hovering **/
     color: #ede6e6;
+}
+
+.logo {
+    background-color: white;
+    width: 15rem;
 }

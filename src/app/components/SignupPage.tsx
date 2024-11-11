@@ -36,7 +36,7 @@ export default function SignupPage() {
     return (
         <div className={styles.background}>
             <div className={styles.container}>
-                <Logo></Logo>
+                <Logo className={styles.logo}></Logo>
                 <h1 className={styles.name}>Simpli Quiz</h1>
 
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
