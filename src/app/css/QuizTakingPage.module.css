@@ -1,3 +1,37 @@
+.navBar {
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    align-items: center;
+    justify-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Caveat', sans-serif;
+    margin: 1rem;
+}
+
+.backArrow {
+    width: 2.5rem;
+    justify-self: start;
+}
+
+.navBar h1 {
+    /** Align quiz title to center **/
+    text-align: center;
+    justify-self: center;
+}
+
+.dottedLine {
+    text-align: center;
+    justify-self: center;
+    width: 25rem;
+}
+
+.gear {
+    width: 2.5rem;
+    justify-self: end;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -5,6 +39,7 @@
     /** Align in center **/
     margin: 1rem auto;
     text-transform: uppercase;
+    font-family: 'NunitoSans', sans-serif;
 }
 
 .question {
@@ -57,9 +92,4 @@
 .button:hover {
     /** Slight gray color when hovering **/
     background-color: #ede6e6;
-}
-
-.homeImage {
-    width: 2.5rem;
-    margin: 1rem;
 }

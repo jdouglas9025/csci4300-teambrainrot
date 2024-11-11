@@ -4,28 +4,43 @@ import {FormEvent, useState} from "react";
 import Button, {ButtonType} from "@/app/components/Button";
 import {QuizItem} from "@/app/interfaces";
 import styles from '../css/QuizTakingPage.module.css'
+import dottedLineLightIcon from "@/app/icons/DottedLineLight.svg";
+import gearLightIcon from "@/app/icons/GearLight.svg";
 import Image from "next/image";
-import home from "@/app/icons/HomeLight.svg";
-import Link from "next/link";
 
 interface QuizTakingProps {
+    quizTitle: string // Title of overall quiz
     quizItem: QuizItem // Current item within quiz
+    backHandler: () => void
     submitHandler: (selectedAnswerId: string) => void
 }
 
 export default function QuizTakingPage(props: QuizTakingProps) {
-    const [selectedOption, setSelectedOption] = useState('')
+    // Init selection to either existing selection (if reviewing) or none
+    const [selectedOption, setSelectedOption] = useState(props.quizItem.selectedAnswerId || '')
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault()
         props.submitHandler(selectedOption) // Store the selected option
+
+        // Clear selected option so none for next item
+        setSelectedOption('')
     }
 
     return (
         <>
-            <Link href={'/homepage'}>
-                <Image src={home} alt={'A home icon.'} className={styles.homeImage}/>
-            </Link>
+            <div className={styles.navBar}>
+                <Button buttonType={ButtonType.backArrow} type={'button'} className={styles.backArrow} onClick={props.backHandler}></Button>
+
+                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
+
+                <h1>{props.quizTitle}</h1>
+
+                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
+
+                <Image src={gearLightIcon} alt={'Gear icon'} className={styles.gear}></Image>
+            </div>
+
 
             <div className={styles.container}>
                 <p className={styles.question}>Q{props.quizItem.id}: {props.quizItem.question}</p>

@@ -7,8 +7,11 @@ import home from '../icons/HomeLight.svg'
 import Image from "next/image";
 import styles from '../css/QuizResultsPage.module.css'
 import Link from "next/link";
+import dottedLineLightIcon from "@/app/icons/DottedLineLight.svg";
+import gearLightIcon from "@/app/icons/GearLight.svg";
 
 interface QuizResultsProps {
+    quizTitle: string
     quizItems: QuizItem[]
 }
 
@@ -18,9 +21,19 @@ export default function QuizResultsPage(props: QuizResultsProps) {
 
     return (
         <>
-            <Link href={'/homepage'}>
-                <Image src={home} alt={'A home icon.'} className={styles.homeImage}/>
-            </Link>
+            <div className={styles.navBar}>
+                <Link href={'/homepage'}>
+                    <Image src={home} alt={'A home icon.'} className={styles.home}/>
+                </Link>
+
+                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
+
+                <h1>{props.quizTitle}</h1>
+
+                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
+
+                <Image src={gearLightIcon} alt={'Gear icon'} className={styles.gear}></Image>
+            </div>
 
             <div className={styles.container}>
                 <div className={styles.results}>
