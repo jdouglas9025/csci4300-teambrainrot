@@ -5,12 +5,14 @@ import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {Question} from "@/app/components/HomePage";
 import Link from "next/link";
+import Image from "next/image";
 
 interface QuizProps {
     quiz: {
         id: number;
         name: string;
         desc: string;
+        imageURL: string;
         questions: Question[];
     }
 }
@@ -36,6 +38,7 @@ export default function QuizFunc(props: QuizProps) {
 
     return (
         <div className={styles.gridContainer}>
+            <Image className={styles.quizImage} src={props.quiz.imageURL} alt={props.quiz.name} width={175} height={175}/>
             <h2 className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</h2>
             <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.questions.length} Questions</p>
             <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.desc}</p>

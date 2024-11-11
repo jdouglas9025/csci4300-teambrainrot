@@ -1,13 +1,12 @@
 import styles from "../css/Answer.module.css";
 
 interface AnswerProps {
-    answer: {
-        id: number;
-        content: string;
-    }
+    id: number;
+    content: string;
+    questionID: number;
 }
 
-export default function Answer({answer}: AnswerProps) {
+export default function Answer(answer: AnswerProps) {
 
     let questionLetter: string = "";
 
@@ -30,8 +29,9 @@ export default function Answer({answer}: AnswerProps) {
 
     return (
         <div className={styles.flexContainer}>
-            <label className={styles.letter} for={answer.id.toString()} >{questionLetter})</label>
-            <input className={styles.content} id={answer.id.toString()} name={answer.id.toString()} value={answer.content} placeholder={"Enter Answer"}/>
+            <label className={styles.letter}>{questionLetter})</label>
+            <input className={styles.content} name={answer.id.toString()} value={answer.content} placeholder={"Enter Answer"}/>
+            <input type={"radio"} value={answer.id.toString()} name={answer.questionID.toString()}/>
         </div>
     );
 }

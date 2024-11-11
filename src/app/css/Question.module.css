@@ -1,8 +1,5 @@
 .questionContainer {
     width: 100%;
-}
-
-.formContainer {
     display: flex;
     flex-direction: column;
 }
