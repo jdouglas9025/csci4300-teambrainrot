@@ -46,7 +46,7 @@
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    width: 30rem;
+    width: 40vw;
     height: 7.5rem;
     padding: 1rem;
     border: .25rem solid black;
@@ -60,7 +60,7 @@
 
 .answer {
     font-size: 1rem;
-    width: 30rem;
+    width: 40vw;
     padding: 1rem;
     border: .25rem solid black;
     margin-bottom: 0.25rem;
@@ -80,7 +80,7 @@
 }
 
 .button {
-    width: 10rem;
+    width: 12.5vw;
     padding: 1rem;
     margin: 1rem 0;
     font-weight: bold;

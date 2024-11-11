@@ -5,6 +5,7 @@ import Button, {ButtonType} from "@/app/components/Button";
 import Link from "next/link";
 import styles from '../css/SignupLoginPage.module.css'
 import {useRouter} from "next/navigation";
+import Logo from "@/app/components/Logo";
 
 export default function SignupPage() {
     const [email, setEmail] = useState('')
@@ -35,6 +36,7 @@ export default function SignupPage() {
     return (
         <div className={styles.background}>
             <div className={styles.container}>
+                <Logo></Logo>
                 <h1 className={styles.name}>Simpli Quiz</h1>
 
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
