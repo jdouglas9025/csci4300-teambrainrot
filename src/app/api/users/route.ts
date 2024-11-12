@@ -11,3 +11,11 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({message: 'User added successfully.'}, {status: 201})
 }
+
+// Route for getting all users -- probably not needed in prod but helpful for testing
+export async function GET() {
+    await connectMongoDB()
+    const quizzes = await User.find()
+
+    return NextResponse.json({quizzes})
+}
