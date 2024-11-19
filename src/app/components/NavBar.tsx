@@ -60,8 +60,9 @@ export default function NavBar({
             <div className={styles.iconContainer}>
                 {leftIcon}
             </div>
-            
-            
+
+            <hr className={styles.divider}/>
+
             <div className={styles.titleContainer}>
                 {editable ? (
                 isEditing ? (
@@ -87,6 +88,9 @@ export default function NavBar({
                 </h1>
                 )}
             </div>
+
+            <hr className={styles.divider} />
+
             <div className={styles.iconContainer}>    
                 {rightIcon}
             </div>
