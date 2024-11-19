@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "../../../../../lib/mongodb";
-import { User } from '../../../../../models/user'
+import {UserSchema} from '../../../../../models/UserSchema'
 
 interface RouteParams {
     params: {
@@ -13,7 +13,7 @@ export async function GET(request: NextRequest, routeParams: RouteParams) {
     const id = routeParams.params.id;
 
     await connectMongoDB()
-    const user = await User.findById(id)
+    const user = await UserSchema.findById(id)
 
     return NextResponse.json({user})
 }
@@ -22,9 +22,9 @@ export async function GET(request: NextRequest, routeParams: RouteParams) {
 export async function PUT(request: NextRequest, routeParams: RouteParams) {
     const id = routeParams.params.id;
 
-    const { email, password } = await request.json()
+    const {email, password} = await request.json()
     await connectMongoDB()
-    await User.findByIdAndUpdate(id, {
+    await UserSchema.findByIdAndUpdate(id, {
         email: email,
         password: password
     })
@@ -36,7 +36,7 @@ export async function PUT(request: NextRequest, routeParams: RouteParams) {
 export async function DELETE(routeParams: RouteParams) {
     const id = routeParams.params.id;
     await connectMongoDB()
-    const deletedItem = await User.findByIdAndDelete(id)
+    const deletedItem = await UserSchema.findByIdAndDelete(id)
 
     if (!deletedItem) {
         return NextResponse.json({message: 'User not found'}, {status: 404})

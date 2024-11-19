@@ -6,6 +6,7 @@ import Link from "next/link";
 import styles from '../css/SignupLoginPage.module.css'
 import {useRouter} from "next/navigation";
 import Logo from "@/app/components/Logo";
+import {doCredentialLogin} from "@/login";
 
 export default function LoginPage() {
     const [email, setEmail] = useState('')
@@ -13,19 +14,26 @@ export default function LoginPage() {
 
     const router = useRouter()
 
-    function handleSubmit(event: FormEvent) {
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault()
 
-        // Save info to db...
-        console.log(email)
-        console.log(password)
+        // Verify fields aren't blank
+        if (email === '' || password === '') {
+            return
+        }
+
+        // Attempt login
+        const result = await doCredentialLogin(email, password)
+        if (result.success) {
+            // Successful login
+            router.push('/homepage')
+        } else {
+            alert('Login failed. Please try again.')
+        }
 
         // Reset fields
-        setEmail('')
-        setPassword('')
-
-        // Redirect user to homepage
-        router.push('/homepage')
+        setEmail('');
+        setPassword('');
     }
 
     return (

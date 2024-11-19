@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "../../../../../lib/mongodb";
-import { Quiz } from '../../../../../models/quiz'
+import {Quiz} from '../../../../../models/quiz'
 
 interface RouteParams {
     params: {
@@ -22,7 +22,7 @@ export async function GET(routeParams: RouteParams) {
 export async function PUT(request: NextRequest, routeParams: RouteParams) {
     const id = routeParams.params.id;
 
-    const { ownerId, name, quizItems } = await request.json()
+    const {ownerId, name, quizItems} = await request.json()
     await connectMongoDB()
     await Quiz.findByIdAndUpdate(id, {
         ownerId: ownerId,

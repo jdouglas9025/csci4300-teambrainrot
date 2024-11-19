@@ -42,10 +42,11 @@ export default function QuizFunc(props: QuizProps) {
             <h2 className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</h2>
             <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.questions.length} Questions</p>
             <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.desc}</p>
+
             <Link className={styles.link} href={'/quiz/' + props.quiz.id}> {/** Use quiz id as slug **/}
                 <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
             </Link>
-            <Link className={styles.link} href={'/quizeditpage'}>
+            <Link className={styles.link} href={'/quizeditpage/' + props.quiz.id}>
                 <Button buttonType={ButtonType.gear} className={styles.quizSettings}/>
             </Link>
         </div>

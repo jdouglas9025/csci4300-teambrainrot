@@ -1,13 +1,17 @@
 import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "../../../../lib/mongodb";
-import { User } from '../../../../models/user'
+import {User} from '../../../../models/UserSchema'
+import bcrypt from "bcryptjs"
 
 // Route for creating new user
 export async function POST(request: NextRequest) {
-    const { email, password } = await request.json()
+    const {email, password} = await request.json()
     await connectMongoDB()
 
-    await User.create({email, password})
+    const hashedPassword = await bcrypt.hash(password, 5)
+
+    // Must specify field since name differs
+    await User.create({email, password: hashedPassword})
 
     return NextResponse.json({message: 'User added successfully.'}, {status: 201})
 }
@@ -15,7 +19,7 @@ export async function POST(request: NextRequest) {
 // Route for getting all users -- probably not needed in prod but helpful for testing
 export async function GET() {
     await connectMongoDB()
-    const quizzes = await User.find()
+    const users = await User.find()
 
-    return NextResponse.json({quizzes})
+    return NextResponse.json({users})
 }

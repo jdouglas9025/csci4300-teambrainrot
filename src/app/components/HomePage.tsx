@@ -9,6 +9,7 @@ import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
 import Logo from "@/app/components/Logo";
+import {doLogout} from "@/login";
 
 export type Answer = {
     id: number;
@@ -194,7 +195,7 @@ export default function HomePage(props: HomePageProps) {
         <div className={styles.dottedOutline}>
             <div className={styles.navBar}>
                 <Link href={'/login'}>
-                    <Button className={styles.logOut} buttonType={ButtonType.door}/>
+                    <Button className={styles.logOut} buttonType={ButtonType.door} onClick={() => doLogout()}/>
                 </Link>
                 <Logo className={styles.logo}/>
                 <Link href={'/settingspage'}>
