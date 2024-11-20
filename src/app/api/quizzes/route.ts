@@ -1,23 +1,13 @@
 import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "../../../../lib/mongodb";
-import {Quiz, User} from '../../../../models/UserSchema'
+import {Quiz} from '../../../../models/UserSchema'
 
 // Route for creating new quiz
 export async function POST(request: NextRequest) {
-    // In addition quiz, userId should be included in body to associate with owner
-    const {userId, name, quizItems} = await request.json()
+    const {ownerId, name, quizItems, image, description} = await request.json()
     await connectMongoDB()
 
-    const newQuiz = await Quiz.create({name, quizItems})
-
-    // Add quiz to owner's list
-    const {email, password, quizzes} = await User.findById(userId)
-    const updatedQuizzes = [...quizzes, newQuiz]
-    await User.findByIdAndUpdate(userId, {
-        email: email,
-        password: password,
-        quizzes: updatedQuizzes
-    })
+    await Quiz.create({ownerId, name, quizItems, image, description})
 
     return NextResponse.json({message: 'Quiz added successfully.'}, {status: 201})
 }

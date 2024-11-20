@@ -7,17 +7,20 @@ import styles from '../css/QuizTakingPage.module.css'
 import dottedLineLightIcon from "@/app/icons/DottedLineLight.svg";
 import gearLightIcon from "@/app/icons/GearLight.svg";
 import Image from "next/image";
+import {IQuizItem} from "../../../models/UserSchema";
 
 interface QuizTakingProps {
     quizTitle: string // Title of overall quiz
-    quizItem: QuizItem // Current item within quiz
+    quizItem: IQuizItem // Current item within quiz
+    questionNumber: number
+    selectedAnswer: string // Existing selection
     backHandler: () => void
-    submitHandler: (selectedAnswerId: string) => void
+    submitHandler: (selectedAnswer: string) => void
 }
 
 export default function QuizTakingPage(props: QuizTakingProps) {
     // Init selection to either existing selection (if reviewing) or none
-    const [selectedOption, setSelectedOption] = useState(props.quizItem.selectedAnswerId || '')
+    const [selectedOption, setSelectedOption] = useState(props.selectedAnswer || '')
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault()
@@ -25,6 +28,16 @@ export default function QuizTakingPage(props: QuizTakingProps) {
 
         // Clear selected option so none for next item
         setSelectedOption('')
+    }
+
+    function convertAnswerIndexToLetter(index: number) {
+        switch (index) {
+            case 0: return 'A'
+            case 1: return 'B'
+            case 2: return 'C'
+            case 3: return 'D'
+            // Any additional conversions
+        }
     }
 
     return (
@@ -43,20 +56,21 @@ export default function QuizTakingPage(props: QuizTakingProps) {
 
 
             <div className={styles.container}>
-                <p className={styles.question}>Q{props.quizItem.id}: {props.quizItem.question}</p>
+                <p className={styles.question}>Q{props.questionNumber}: {props.quizItem.question}</p>
 
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
-                    {props.quizItem.answers.map(answer => (
-                        <div className={styles.answer} key={answer.id}>
-                            <label htmlFor={answer.id}>
+                    {props.quizItem.answers.map((answer, index) => (
+                        <div className={styles.answer} key={answer._id}>
+                            <label htmlFor={answer.content}>
                                 <input
                                     type="radio"
-                                    value={answer.id}
-                                    checked={selectedOption === answer.id}
-                                    onChange={event => setSelectedOption(event.target.value)}
+                                    value={answer.content}
+                                    checked={selectedOption === answer.content}
+                                    onChange={() => setSelectedOption(answer.content)}
                                 />
 
-                                <p><span className={styles.answerId}>{answer.id})</span> {answer.content}</p>
+                                {/** Use index of current answer in array as letter to allow randomization **/}
+                                <p><span className={styles.answerId}>{convertAnswerIndexToLetter(index)})</span> {answer.content}</p>
                             </label>
                         </div>
                     ))}

@@ -3,7 +3,7 @@
 import {signIn, signOut} from '@/auth'
 
 export async function doLogout() {
-    await signOut({redirectTo: '/'})
+    await signOut()
 }
 
 export async function doCredentialLogin(email: string, password: string) {

@@ -14,23 +14,42 @@ export default function SignupPage() {
 
     const router = useRouter()
 
-    function handleSubmit(event: FormEvent) {
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault()
 
-        // Save info to db...
-        console.log(email)
-        console.log(password)
-        console.log(confirmPassword)
+        // Verify fields aren't blank and passwords match
+        if (email === '' || password === '' || confirmPassword === '' || password !== confirmPassword) {
+            alert('Check email/password fields and try again.')
+            return
+        }
+
+        // Create user in DB
+        const data = {
+            email: email,
+            password: password
+        }
+
+        const response = await fetch('http://localhost:3000/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        if (!response.ok) {
+            alert('Failed to create an account. Please try again.')
+        } else {
+            alert('Successfully created an account. Please login using the provided information.')
+
+            // Redirect user to login page
+            router.push('/login')
+        }
 
         // Reset fields
         setEmail('')
         setPassword('')
         setConfirmPassword('')
-
-        alert('Successfully created an account. Please login using the provided information.')
-
-        // Redirect user to login page
-        router.push('/login')
     }
 
     return (

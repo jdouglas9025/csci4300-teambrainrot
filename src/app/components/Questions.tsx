@@ -1,17 +1,19 @@
 import styles from "@/app/css/Questions.module.css"
 import QuestionFunc from "@/app/components/Question";
-import Questions from "@/app/components/QuizEditPage";
+import {IQuizItem} from "../../../models/UserSchema";
+import {IQuizItemEdit} from "@/app/interfaces";
 
 interface QuestionsProps {
-    questions: Questions[];
+    questions: IQuizItemEdit[];
+    onEdit: (targetIdx: number, currQuestion: IQuizItemEdit) => void
 }
 
-export default function Questions({questions}: QuestionsProps) {
+export default function Questions(props: QuestionsProps) {
     return(
         <ul className={styles.questionList}>
-            {questions.map(questionPassed =>
-                <li className={styles.listItem} key={questionPassed.id}>
-                    <QuestionFunc question={questionPassed}/>
+            {props.questions.map((questionPassed, index)=>
+                <li className={styles.listItem} key={index}>
+                    <QuestionFunc index={index} question={questionPassed} questionNum={index + 1} onEdit={props.onEdit}/>
                 </li>
             )}
         </ul>

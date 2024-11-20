@@ -3,6 +3,7 @@ import {authConfig} from "@/auth.config";
 import {User} from '../models/UserSchema'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcryptjs'
+import connectMongoDB from "../lib/mongodb";
 
 export const {
     handlers: {GET, POST},
@@ -23,6 +24,8 @@ export const {
                 }
 
                 try {
+                    // Connect to DB first before making any calls
+                    await connectMongoDB()
                     const user = await User.findOne({email: credentials.email}).lean()
 
                     if (user) {

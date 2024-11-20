@@ -1,27 +1,46 @@
 import styles from "../css/Answer.module.css";
+import {IAnswerEdit} from "@/app/interfaces";
+import {useEffect, useState} from "react";
 
 interface AnswerProps {
-    id: number;
+    index: number;
     content: string;
-    questionID: number;
+    questionNum: number;
+    onEdit: (targetIdx: number, currAnswer: IAnswerEdit) => void
+    onCorrectAnswerChange: (correctAnswerContent: string) => void
 }
 
-export default function Answer(answer: AnswerProps) {
+export default function Answer(props: AnswerProps) {
+    const [currContent, setCurrContent] = useState(props.content)
+
+    useEffect(() => {
+        setCurrContent(props.content)
+    }, [props.content])
+
+    function onEditAnswer(content: string) {
+        setCurrContent(content)
+
+        const updatedAnswer: IAnswerEdit = {
+            content: content
+        }
+
+        props.onEdit(props.index, updatedAnswer)
+    }
 
     let questionLetter: string = "";
 
-    switch (answer.id) {
+    switch (props.index + 1) {
         case 1:
-            questionLetter = "a";
+            questionLetter = "A";
             break;
         case 2:
-            questionLetter = "b";
+            questionLetter = "B";
             break;
         case 3:
-            questionLetter = "c";
+            questionLetter = "C";
             break;
         case 4:
-            questionLetter = "d";
+            questionLetter = "D";
             break;
         default:
             questionLetter = "";
@@ -30,8 +49,16 @@ export default function Answer(answer: AnswerProps) {
     return (
         <div className={styles.flexContainer}>
             <label className={styles.letter}>{questionLetter})</label>
-            <input className={styles.content} name={answer.id.toString()} value={answer.content} placeholder={"Enter Answer"}/>
-            <input type={"radio"} value={answer.id.toString()} name={answer.questionID.toString()}/>
+            <input className={styles.content} value={currContent} placeholder={"Enter Answer"} onChange={event => onEditAnswer(event.target.value)}/>
+            <input
+                type="radio"
+                value={currContent}
+                onChange={() =>
+                    {
+                        props.onCorrectAnswerChange(currContent)
+                    }
+                }
+            />
         </div>
     );
 }

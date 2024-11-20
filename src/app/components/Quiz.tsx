@@ -6,15 +6,10 @@ import {useRouter} from "next/navigation";
 import {Question} from "@/app/components/HomePage";
 import Link from "next/link";
 import Image from "next/image";
+import {IQuiz} from "../../../models/UserSchema";
 
 interface QuizProps {
-    quiz: {
-        id: number;
-        name: string;
-        desc: string;
-        imageURL: string;
-        questions: Question[];
-    }
+    quiz: IQuiz
 }
 
 export default function QuizFunc(props: QuizProps) {
@@ -38,15 +33,15 @@ export default function QuizFunc(props: QuizProps) {
 
     return (
         <div className={styles.gridContainer}>
-            <Image className={styles.quizImage} src={props.quiz.imageURL} alt={props.quiz.name} width={175} height={175}/>
+            <Image className={styles.quizImage} src={props.quiz.image} alt={props.quiz.name} width={175} height={175}/>
             <h2 className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</h2>
-            <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.questions.length} Questions</p>
-            <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.desc}</p>
+            <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.quizItems.length} Questions</p>
+            <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.description}</p>
 
-            <Link className={styles.link} href={'/quiz/' + props.quiz.id}> {/** Use quiz id as slug **/}
+            <Link className={styles.link} href={'/quiz/' + props.quiz._id}> {/** Use quiz id as slug **/}
                 <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
             </Link>
-            <Link className={styles.link} href={'/quizeditpage/' + props.quiz.id}>
+            <Link className={styles.link} href={'/quizeditpage/' + props.quiz._id}>
                 <Button buttonType={ButtonType.gear} className={styles.quizSettings}/>
             </Link>
         </div>

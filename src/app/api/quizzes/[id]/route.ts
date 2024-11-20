@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "../../../../../lib/mongodb";
-import {Quiz} from '../../../../../models/quiz'
+import {Quiz} from '../../../../../models/UserSchema'
 
 interface RouteParams {
     params: {
@@ -9,8 +9,8 @@ interface RouteParams {
 }
 
 // Route for getting a specific quiz
-export async function GET(routeParams: RouteParams) {
-    const id = routeParams.params.id
+export async function GET(request: NextRequest, routeParams: RouteParams) {
+    const { id } = await routeParams.params;
 
     await connectMongoDB()
     const quiz = await Quiz.findById(id)
@@ -20,22 +20,19 @@ export async function GET(routeParams: RouteParams) {
 
 // Update a specific quiz
 export async function PUT(request: NextRequest, routeParams: RouteParams) {
-    const id = routeParams.params.id;
+    const { id } = await routeParams.params;
 
-    const {ownerId, name, quizItems} = await request.json()
+    const {ownerId, name, quizItems, image, description} = await request.json()
     await connectMongoDB()
-    await Quiz.findByIdAndUpdate(id, {
-        ownerId: ownerId,
-        name: name,
-        quizItems: quizItems
-    })
+    await Quiz.findByIdAndUpdate(id, {ownerId, name, quizItems, image, description})
 
     return NextResponse.json({message: 'Quiz updated'})
 }
 
 // Delete a quiz
-export async function DELETE(routeParams: RouteParams) {
-    const id = routeParams.params.id;
+export async function DELETE(request: NextRequest, routeParams: RouteParams) {
+    const { id } = await routeParams.params;
+
     await connectMongoDB()
     const deletedItem = await Quiz.findByIdAndDelete(id)
 
