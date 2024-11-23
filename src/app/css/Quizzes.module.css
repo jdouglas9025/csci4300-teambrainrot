@@ -4,5 +4,9 @@
 }
 
 .quizItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2em;
     margin-bottom: 2em;
 }

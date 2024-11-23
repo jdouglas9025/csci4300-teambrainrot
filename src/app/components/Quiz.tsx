@@ -1,9 +1,6 @@
-
 import styles from "@/app/css/Quiz.module.css";
 import Button, {ButtonType} from "@/app/components/Button";
-import {useState} from "react";
 import {useRouter} from "next/navigation";
-import {Question} from "@/app/components/HomePage";
 import Link from "next/link";
 import Image from "next/image";
 import {IQuiz} from "../../../models/UserSchema";
@@ -32,19 +29,26 @@ export default function QuizFunc(props: QuizProps) {
     */
 
     return (
-        <div className={styles.gridContainer}>
-            <Image className={styles.quizImage} src={props.quiz.image} alt={props.quiz.name} width={175} height={175}/>
-            <h2 className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</h2>
-            <p className={styles.fontNunito + " " + styles.quizNumQuestions}>{props.quiz.quizItems.length} Questions</p>
-            <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.description}</p>
-
-            <Link className={styles.link} href={'/quiz/' + props.quiz._id}> {/** Use quiz id as slug **/}
-                <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
-            </Link>
-            <Link className={styles.link} href={'/quizeditpage/' + props.quiz._id}>
-                <Button buttonType={ButtonType.gear} className={styles.quizSettings}/>
-            </Link>
-        </div>
+            <div className={styles.gridContainer}>
+                <div className={styles.imageContainer}>
+                    <Image className={styles.quizImage} src={props.quiz.image} alt={props.quiz.name} width={175} height={175}/>
+                </div>
+                <div className={styles.quizProps}>
+                    <div className={styles.quizPropsUpper}>
+                        <p className={styles.fontCaveat + " " + styles.quizName}>{props.quiz.name}</p>
+                        <p className={styles.fontCaveat + " " + styles.quizNumQuestions}>{props.quiz.quizItems.length} Questions</p>
+                    </div>
+                    <p className={styles.fontNunito + " " + styles.quizDesc}>{props.quiz.description}</p>
+                </div>
+                <div className={styles.quizButtons}>
+                    <Link className={styles.link} href={'/quiz/' + props.quiz._id}> {/** Use quiz id as slug **/}
+                        <Button buttonType={ButtonType.play} className={styles.quizPlay}/>
+                    </Link>
+                    <Link className={styles.link} href={'/quizeditpage/' + props.quiz._id}>
+                        <Button buttonType={ButtonType.gear} className={styles.quizSettings}/>
+                    </Link>
+                </div>
+            </div>
     )
 }
 
