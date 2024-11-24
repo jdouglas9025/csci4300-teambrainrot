@@ -7,6 +7,7 @@ import doorLightIcon from '../icons/DoorLight.svg'
 import homeLightIcon from '../icons/HomeLight.svg'
 import backArrowLightIcon from '../icons/BackArrowLight.svg'
 import Image from "next/image";
+import styles from "@/app/css/Button.module.css";
 
 export enum ButtonType {
     login, add, edit, play, gear, signup, door, done, submit, save, home, backArrow

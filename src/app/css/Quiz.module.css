@@ -1,44 +1,71 @@
-
-
 .gridContainer {
-    display: grid;
-    grid-template-areas:
-    'zone0 zone1 zone1 zone2 zone2 zone4 zone4'
-    'zone0 zone3 zone3 zone3 zone3 zone5 zone5'
-    ;
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
     width: 100%;
+    height: 200px;
     border: black solid 5px;
 }
 
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: black solid 5px;
+}
+
+.quizImage {
+    padding: .25em;
+}
+
+.quizProps {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+}
+
+.quizPropsUpper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: .25em .5em;
+}
+
 .quizName {
-    grid-area: zone1;
-    font-size: 4em;
+    font-size: 3em;
 }
 
 .quizNumQuestions {
-    grid-area: zone2;
     font-size: 3em;
 }
 
 .quizDesc {
-    grid-area: zone3;
+    width: 100%;
+    overflow: scroll;
+    padding: .5em 1em;
+}
+
+.quizButtons {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    height: 100%;
 }
 
 .quizPlay {
-    grid-area: zone4;
     display: block;
     width: 100%;
+    border-left: solid black 5px;
+    border-bottom: solid black 5px;
 }
 
 .quizSettings {
-    grid-area: zone5;
     display: block;
     width: 100%;
-}
-
-.quizImage {
-    grid-area: zone0;
+    border-left: solid black 5px;
 }
 
 .fontCaveat {
@@ -50,6 +77,11 @@
 }
 
 .link {
-    display: block;
+    display: flex;
+    flex-direction: row;
     width: 100%;
+    flex-grow: 1;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
 }

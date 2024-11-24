@@ -53,6 +53,7 @@ export default function Answer(props: AnswerProps) {
             <input
                 type="radio"
                 value={currContent}
+                name={props.questionNum.toString()}
                 onChange={() =>
                     {
                         props.onCorrectAnswerChange(currContent)

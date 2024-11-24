@@ -114,7 +114,7 @@ export default function QuizEditPage() {
     return (
         <div className={styles.totalContainer}>
             <div className={styles.topBar}>
-                <Link href={"/homepage"}><Button buttonType={ButtonType.door}/></Link>
+                <Link href={"/homepage"}><Button buttonType={ButtonType.backArrow}/></Link>
                 {/* Need to add a button type for the back arrow */}
                 <h1>{currQuiz.name}</h1>
                 {/* will need to change the pass value when we set up nav bar */}
