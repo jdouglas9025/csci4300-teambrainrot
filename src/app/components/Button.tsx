@@ -6,11 +6,12 @@ import gearLightIcon from '../icons/GearLight.svg'
 import doorLightIcon from '../icons/DoorLight.svg'
 import homeLightIcon from '../icons/HomeLight.svg'
 import backArrowLightIcon from '../icons/BackArrowLight.svg'
+import trashIcon from '../icons/TrashCanLight.svg'
 import Image from "next/image";
 import styles from "@/app/css/Button.module.css";
 
 export enum ButtonType {
-    login, add, edit, play, gear, signup, door, done, submit, save, home, backArrow
+    login, add, edit, play, gear, signup, door, done, submit, save, home, backArrow, trash
 }
 
 interface ButtonProps {
@@ -58,6 +59,9 @@ export default function Button(props: ButtonProps) {
             break
         case ButtonType.backArrow:
             content = <Image src={backArrowLightIcon} alt={'Back arrow icon'}></Image>
+            break
+        case ButtonType.trash:
+            content = <Image src={trashIcon} alt={'Trash icon'}></Image>
             break
     }
 
