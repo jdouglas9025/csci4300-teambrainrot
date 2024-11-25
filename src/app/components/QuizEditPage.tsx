@@ -39,10 +39,6 @@ export default function QuizEditPage() {
         await connectMongoDB()
         await fetch('http://localhost:3000/api/quizzes/' + id, {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(currQuiz)
         })
 
         // Redirect to homepage
