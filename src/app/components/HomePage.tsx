@@ -246,7 +246,8 @@ export default function HomePage(props: HomePageProps) {
             router.push('/quizeditpage/' + result.quizzes[quizLength]._id)
         }
     }
-    */
+     */
+
 
     const { isDarkMode, setDarkMode } = useDarkMode()
 
@@ -273,6 +274,7 @@ export default function HomePage(props: HomePageProps) {
             {/** Add a empty quiz to DB **/}
             <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={() => {
                 addEmptyQuiz()
+                    //.then(()=>{router.push('/quizeditpage/' + quizzes[quizzes.length - 1]._id)})
                 //pushQuizEdit()
             }}/>
         </div>
