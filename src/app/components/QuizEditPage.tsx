@@ -42,6 +42,10 @@ export default function QuizEditPage() {
         await connectMongoDB()
         await fetch('http://localhost:3000/api/quizzes/' + id, {
             method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(currQuiz)
         })
 
         // Redirect to homepage
@@ -59,7 +63,9 @@ export default function QuizEditPage() {
                 question: 'Default question',
                 answers: [
                     { content: 'First answer'},
-                    { content: 'Second answer'}
+                    { content: 'Second answer'},
+                    { content: 'Third answer'},
+                    { content: 'Fourth answer'}
                 ],
                 correctAnswerContent: 'First answer'
             }

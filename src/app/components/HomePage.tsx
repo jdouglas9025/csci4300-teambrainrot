@@ -214,7 +214,10 @@ export default function HomePage(props: HomePageProps) {
                         question: 'Default Question',
                         answers: [
                             { content: 'First answer'},
-                            { content: 'Second answer'}
+                            { content: 'Second answer'},
+                            { content: 'Third answer'},
+                            { content: 'Fourth answer'}
+
                         ],
                         correctAnswerContent: 'First answer'
                     }
@@ -233,6 +236,9 @@ export default function HomePage(props: HomePageProps) {
 
             // Retrieve updated quizzes
             await getQuizzes()
+
+            // Push new quiz edit screen
+            router.push('/quizeditpage/' + quizzes[quizzes.length - 1]._id)
         }
     }
 
@@ -243,7 +249,7 @@ export default function HomePage(props: HomePageProps) {
         const result = await response.json()
         if (result.quizzes) {
             const quizLength = result.quizzes.length;
-            router.push('/quizeditpage/' + result.quizzes[quizLength]._id)
+
         }
     }
      */
@@ -272,11 +278,7 @@ export default function HomePage(props: HomePageProps) {
             )}
 
             {/** Add a empty quiz to DB **/}
-            <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={() => {
-                addEmptyQuiz()
-                    //.then(()=>{router.push('/quizeditpage/' + quizzes[quizzes.length - 1]._id)})
-                //pushQuizEdit()
-            }}/>
+            <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={addEmptyQuiz}/>
         </div>
     );
 }
