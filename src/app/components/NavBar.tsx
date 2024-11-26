@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import Button, {ButtonType} from "@/app/components/Button";
 import styles from '../css/NavBar.module.css'
 import Link from "next/link";
+import { useDarkMode } from "./DarkModeContext";
 
 interface NavBarProps {
     leftIcon: React.ReactNode;
@@ -54,6 +55,8 @@ export default function NavBar({
         }
     };
 
+    const { isDarkMode, setDarkMode } = useDarkMode();
+
     return (
         <nav className={styles.navbar}>
             
@@ -61,9 +64,16 @@ export default function NavBar({
                 {leftIcon}
             </div>
 
-            <hr className={styles.divider}/>
+            <hr className={styles.divider} style={{
+            filter: isDarkMode ? "invert(1)" : "invert(0)",
+            transition: "filter 0.3s ease",
+            }}/>
 
-            <div className={styles.titleContainer}>
+            <div className={styles.titleContainer}
+            style={{
+                filter: isDarkMode ? "invert(1)" : "invert(0)",
+                transition: "filter 0.3s ease",
+            }}>
                 {editable ? (
                 isEditing ? (
                     <input
@@ -89,7 +99,10 @@ export default function NavBar({
                 )}
             </div>
 
-            <hr className={styles.divider} />
+            <hr className={styles.divider} style={{
+            filter: isDarkMode ? "invert(1)" : "invert(0)",
+            transition: "filter 0.3s ease",
+            }}/>
 
             <div className={styles.iconContainer}>    
                 {rightIcon}

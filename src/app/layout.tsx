@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import {SessionProvider} from "next-auth/react";
+import { DarkModeProvider } from "./components/DarkModeContext";
 
 
 const geistSans = localFont({
@@ -41,7 +42,9 @@ export default function RootLayout({
           <body
               className={`${caveat.variable} ${nunitoSans.variable} antialiased`}
           >
+            <DarkModeProvider>
           {children}
+          </DarkModeProvider>
           </body>
         </html>
       </SessionProvider>

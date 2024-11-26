@@ -11,6 +11,7 @@ import Logo from "@/app/components/Logo";
 import {doLogout} from "@/login";
 import {IQuiz} from "../../../models/UserSchema";
 import {useSession} from "next-auth/react";
+import { useDarkMode } from "./DarkModeContext";
 
 // export type Answer = {
 //     id: number;
@@ -233,13 +234,15 @@ export default function HomePage(props: HomePageProps) {
         }
     }
 
+    const { isDarkMode, setDarkMode } = useDarkMode()
+
     return(
-        <div className={styles.dottedOutline}>
+        <div className={`${styles.dottedOutline} ${isDarkMode ? styles.darkMode : ''}`}>
             <div className={styles.navBar}>
                 <Link href={'/login'}>
                     <Button className={styles.logOut} buttonType={ButtonType.door} onClick={() => doLogout()}/>
                 </Link>
-                <Logo className={styles.logo}/>
+                <Logo className={styles.logo} />
                 <Link href={'/settingspage'}>
                     <Button className={styles.userPref} buttonType={ButtonType.gear} onClick={() => {}/* Day/Night Function */}/>
                 </Link>

@@ -9,6 +9,7 @@ import backArrowLightIcon from '../icons/BackArrowLight.svg'
 import trashIcon from '../icons/TrashCanLight.svg'
 import Image from "next/image";
 import styles from "@/app/css/Button.module.css";
+import { useDarkMode } from "./DarkModeContext";
 
 export enum ButtonType {
     login, add, edit, play, gear, signup, door, done, submit, save, home, backArrow, trash
@@ -25,22 +26,22 @@ export default function Button(props: ButtonProps) {
     let content;
     switch (props.buttonType) {
         case ButtonType.login:
-            content = <p>Login</p>
+            content = <p className="text-black">Login</p>
             break
         case ButtonType.signup:
-            content = <p>Sign Up</p>
+            content = <p className="text-black">Sign Up</p>
             break
         case ButtonType.submit:
-            content = <p>Submit</p>
+            content = <p className="text-black">Submit</p>
             break
         case ButtonType.done:
-            content = <p>Done</p>
+            content = <p className="text-black">Done</p>
             break
         case ButtonType.save:
-            content = <p>Save</p>
+            content = <p className="text-black">Save</p>
             break
         case ButtonType.edit:
-            content = <p>Edit Quiz</p>
+            content = <p className="text-black">Edit Quiz</p>
             break
         case ButtonType.add:
             content = <Image src={addLightIcon} alt={'Add icon'}></Image>
@@ -65,11 +66,17 @@ export default function Button(props: ButtonProps) {
             break
     }
 
+    const { isDarkMode, setDarkMode } = useDarkMode();
+
     return (
         <button
             className={props.className}
             type={props.type || 'button'}
             onClick={props.onClick}
+            style={{
+                filter: isDarkMode ? "invert(1)" : "invert(0)",
+                transition: "filter 0.3s ease",
+            }}
         >
             {content}
         </button>

@@ -6,11 +6,19 @@
     border: black solid 5px;
 }
 
+.gridContainer.darkMode {
+    border: white solid 5px;
+}
+
 .imageContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     border-right: black solid 5px;
+}
+
+.imageContainer.darkMode {
+    border-right: white solid 5px;
 }
 
 .quizImage {
