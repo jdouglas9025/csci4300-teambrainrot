@@ -12,6 +12,7 @@ import {doLogout} from "@/login";
 import {IQuiz} from "../../../models/UserSchema";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
+import { useDarkMode } from "./DarkModeContext";
 
 // export type Answer = {
 //     id: number;
@@ -247,17 +248,18 @@ export default function HomePage(props: HomePageProps) {
     }
     */
 
+    const { isDarkMode, setDarkMode } = useDarkMode()
+
     return(
-        <div className={styles.dottedOutline}>
+        <div className={`${styles.dottedOutline} ${isDarkMode ? styles.darkMode : ''}`}>
             <div className={styles.navBar}>
                 <Link href={'/login'}>
                     <Button className={styles.logOut} buttonType={ButtonType.door} onClick={() => doLogout()}/>
                 </Link>
-                <Logo className={styles.logo}/>
+                <Logo className={styles.logo} />
                 <Link href={'/settingspage'}>
-                    <Button className={styles.userPref} buttonType={ButtonType.gear} onClick={() => {}/* Day/Night Function */}/>
+                    <Button className={styles.userPref} buttonType={ButtonType.gear}/>
                 </Link>
-                {/* Need to change this button to a day/night */}
             </div>
             <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {props.userName}</h1>
             <h2 className={styles.fontCaveat + " " + styles.header}>Choose or Create a Quiz</h2>

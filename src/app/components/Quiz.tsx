@@ -4,6 +4,7 @@ import {useRouter} from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import {IQuiz} from "../../../models/UserSchema";
+import { useDarkMode } from "./DarkModeContext";
 
 interface QuizProps {
     quiz: IQuiz
@@ -28,9 +29,11 @@ export default function QuizFunc(props: QuizProps) {
     }
     */
 
+    const { isDarkMode, setDarkMode } = useDarkMode();
+
     return (
-            <div className={styles.gridContainer}>
-                <div className={styles.imageContainer}>
+            <div className={`${styles.gridContainer} ${isDarkMode ? styles.darkMode : ''}`}>
+                <div className={`${styles.imageContainer} ${isDarkMode ? styles.darkMode : ''}`}>
                     <Image className={styles.quizImage} src={props.quiz.image} alt={props.quiz.name} width={175} height={175}/>
                 </div>
                 <div className={styles.quizProps}>

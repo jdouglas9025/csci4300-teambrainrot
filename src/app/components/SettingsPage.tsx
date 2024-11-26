@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar"
 import Button, {ButtonType} from "../components/Button"
 import {useRouter} from "next/navigation";
 import QuizPreferences from "./QuizPreferences";
+import UserPreferences from "./UserPreferences"
 import styles from "../css/SettingsPage.module.css"
 import router from "next/navigation";
 
@@ -18,13 +19,14 @@ export default function SettingsPage() {
             editable={false}
             />
 
-            <div className={styles.container}>
+            <div className={styles.userContainer}>
+                <UserPreferences />
+            </div>
+
+            <div className={styles.quizContainer}>
                 <QuizPreferences />
             </div>
-            <div className={styles.editSection}>
-                <Button buttonType={ButtonType.edit} onClick={() => router.push('/quizeditpage')} className={styles.editButton}/>
-                <span className={styles.deleteText}>Delete</span>
-            </div>
+            
         </>
     );
 }

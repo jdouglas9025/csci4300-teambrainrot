@@ -7,6 +7,10 @@
     padding: 1em;
 }
 
+.dottedOutline.darkMode {
+    border: dashed white 5px;
+}
+
 .navBar {
     width: 100%;
     display: flex;
