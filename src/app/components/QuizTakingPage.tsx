@@ -8,6 +8,7 @@ import dottedLineLightIcon from "@/app/icons/DottedLineLight.svg";
 import gearLightIcon from "@/app/icons/GearLight.svg";
 import Image from "next/image";
 import {IQuizItem} from "../../../models/UserSchema";
+import NavBar from "@/app/components/NavBar";
 
 interface QuizTakingProps {
     quizTitle: string // Title of overall quiz
@@ -42,18 +43,11 @@ export default function QuizTakingPage(props: QuizTakingProps) {
 
     return (
         <>
-            <div className={styles.navBar}>
-                <Button buttonType={ButtonType.backArrow} type={'button'} className={styles.backArrow} onClick={props.backHandler}></Button>
-
-                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
-
-                <h1>{props.quizTitle}</h1>
-
-                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
-
-                <Image src={gearLightIcon} alt={'Gear icon'} className={styles.gear}></Image>
-            </div>
-
+            <NavBar leftIcon={
+                <Button buttonType={ButtonType.backArrow} type={'button'} className={styles.backArrow} onClick={props.backHandler}></Button>}
+                title={props.quizTitle}
+                rightIcon={<div></div>}
+            />
 
             <div className={styles.container}>
                 <p className={styles.question}>Q{props.questionNumber}: {props.quizItem.question}</p>

@@ -9,6 +9,7 @@ import {FormEvent, useEffect, useState} from "react";
 import {useParams, useRouter} from "next/navigation";
 import connectMongoDB from "../../../lib/mongodb";
 import {IQuizEdit, IQuizItemEdit} from "@/app/interfaces";
+import NavBar from "@/app/components/NavBar";
 
 export default function QuizEditPage() {
     const { id } = useParams() // Get id of current quiz based on URL
@@ -109,13 +110,8 @@ export default function QuizEditPage() {
 
     return (
         <div className={styles.totalContainer}>
-            <div className={styles.topBar}>
-                <Link href={"/homepage"}><Button buttonType={ButtonType.backArrow}/></Link>
-                {/* Need to add a button type for the back arrow */}
-                <h1>{currQuiz.name}</h1>
-                {/* will need to change the pass value when we set up nav bar */}
-                <Link href={""}><Button buttonType={ButtonType.gear}/></Link>
-            </div>
+            <NavBar leftIcon={<Link href={"/homepage"}><Button buttonType={ButtonType.backArrow}/></Link>}
+                rightIcon={<div></div>} title={currQuiz.name}/>
 
             {/* Will use this in future: passedQuiz.quiz.quizItems*/}
             <form className={styles.formContainer} onSubmit={submitHandler}>

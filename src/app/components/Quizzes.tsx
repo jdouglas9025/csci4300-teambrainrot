@@ -12,7 +12,6 @@ interface quizzesProps{
 }
 
 export default function Quizzes({quizzes}: quizzesProps) {
-    const router = useRouter()
     async function removeQuiz(quizId) {
         await connectMongoDB();
         await fetch('http://localhost:3000/api/quizzes/' +  quizId, {

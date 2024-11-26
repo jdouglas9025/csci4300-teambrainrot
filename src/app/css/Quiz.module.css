@@ -55,15 +55,26 @@
     height: 100%;
 }
 
+.link {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+    justify-content: center;
+}
+
 .quizPlay {
-    display: block;
+    display: flex;
+    justify-content: center;
     width: 100%;
     border-left: solid black 5px;
     border-bottom: solid black 5px;
 }
 
 .quizSettings {
-    display: block;
+    display: flex;
+    justify-content: center;
     width: 100%;
     border-left: solid black 5px;
 }
@@ -74,14 +85,4 @@
 
 .fontNunito {
     font-family: 'NunitoSans', sans-serif;
-}
-
-.link {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex-grow: 1;
-    text-align: center;
-    justify-content: center;
-    box-sizing: border-box;
 }

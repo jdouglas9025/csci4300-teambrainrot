@@ -2,12 +2,6 @@
     padding: 2em;
 }
 
-.topBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .formContainer{
     display: flex;
     flex-direction: column;
@@ -40,13 +34,13 @@
 }
 
 .quizPropLabel {
-    font-family: Caveat;
+    font-family: Caveat, "Times New Roman";
     font-size: 3em;
     margin-right: 1em;
 }
 
 .quizPropInput {
-    font-family: NunitoSans;
+    font-family: NunitoSans, "Times New Roman";
     font-size: 1.5em;
     width: 20em;
     border: solid black 4px;

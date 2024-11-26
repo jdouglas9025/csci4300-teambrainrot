@@ -11,6 +11,7 @@ import Logo from "@/app/components/Logo";
 import {doLogout} from "@/login";
 import {IQuiz} from "../../../models/UserSchema";
 import {useSession} from "next-auth/react";
+import {useRouter} from "next/navigation";
 
 // export type Answer = {
 //     id: number;
@@ -176,6 +177,7 @@ interface HomePageProps {
 export default function HomePage(props: HomePageProps) {
     const { data: session } = useSession()
     const [quizzes, setQuizzes] = useState<IQuiz[]>([])
+    const router = useRouter()
 
     // Load quiz data for current user
     const getQuizzes = async () => {
@@ -205,7 +207,7 @@ export default function HomePage(props: HomePageProps) {
         if (userId) {
             const data = {
                 ownerId: userId,
-                name: 'Default Quiz',
+                name: 'New Quiz',
                 quizItems: [
                     {
                         question: 'Default Question',
@@ -233,6 +235,18 @@ export default function HomePage(props: HomePageProps) {
         }
     }
 
+    /*
+    async function pushQuizEdit() {
+        const userId = session?.user?.id
+        const response = await fetch('http://localhost:3000/api/quizzes/by-owner/' + userId)
+        const result = await response.json()
+        if (result.quizzes) {
+            const quizLength = result.quizzes.length;
+            router.push('/quizeditpage/' + result.quizzes[quizLength]._id)
+        }
+    }
+    */
+
     return(
         <div className={styles.dottedOutline}>
             <div className={styles.navBar}>
@@ -255,7 +269,10 @@ export default function HomePage(props: HomePageProps) {
             )}
 
             {/** Add a empty quiz to DB **/}
-            <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={addEmptyQuiz}/>
+            <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={() => {
+                addEmptyQuiz()
+                //pushQuizEdit()
+            }}/>
         </div>
     );
 }
