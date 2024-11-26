@@ -76,6 +76,10 @@
     border: .25rem solid black;
 }
 
+.question.darkMode {
+    border: .25rem solid white;
+}
+
 .answerContainer {
     display: flex;
     flex-direction: column;
@@ -92,9 +96,17 @@
     margin-bottom: 0.25rem;
 }
 
+.answer.darkMode {
+    border: .25rem solid white;
+}
+
 .answerImage {
     width: 2.5rem;
     margin-right: 0.5rem;
+}
+
+.answerImage.darkMode {
+    filter: invert(1);
 }
 
 .answerId {

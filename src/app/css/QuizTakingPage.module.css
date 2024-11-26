@@ -52,6 +52,10 @@
     border: .25rem solid black;
 }
 
+.question.darkMode {
+    border: .25rem solid white;
+}
+
 .formContainer {
     display: flex;
     flex-direction: column;
@@ -64,6 +68,10 @@
     padding: 1rem;
     border: .25rem solid black;
     margin-bottom: 0.25rem;
+}
+
+.answer.darkMode {
+    border: .25rem solid white;
 }
 
 .answer label {

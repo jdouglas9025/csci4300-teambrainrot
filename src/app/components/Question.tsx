@@ -4,6 +4,7 @@ import Button, {ButtonType} from "@/app/components/Button";
 import {ChangeEvent, useState} from "react";
 import {IQuizItem} from "../../../models/UserSchema";
 import {IAnswerEdit, IQuizEdit, IQuizItemEdit} from "@/app/interfaces";
+import { useDarkMode } from "./DarkModeContext";
 
 interface QuestionProps {
     index: number
@@ -82,10 +83,14 @@ export default function QuestionsFunc(props: QuestionProps) {
         props.onEdit(props.index, updatedQuestion) // Pass back to parent
     }
 
+    const { isDarkMode, setDarkMode } = useDarkMode();
+
     return(
         <div className={styles.questionContainer}>
             <label className={styles.questionHeader}>Question {props.questionNum}:</label>
-            <textarea className={styles.questionInput} value={currQuestion.question} placeholder={"Enter a Question"} onChange={event => onEditQuestion(event.target.value)}/>
+            <textarea className={styles.questionInput} style={{
+                filter: isDarkMode ? "invert(1)" : "invert(0)",
+            }} value={currQuestion.question} placeholder={"Enter a Question"} onChange={event => onEditQuestion(event.target.value)}/>
             {/** Iterate over answers **/}
             {currQuestion.answers.map((answer, index) =>
                 <Answer key={index} index={index} content={answer.content} questionNum={props.questionNum} onEdit={onEditAnswer} onCorrectAnswerChange={onCorrectAnswerChange}/>

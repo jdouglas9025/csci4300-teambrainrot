@@ -1,6 +1,7 @@
 import styles from "../css/Answer.module.css";
 import {IAnswerEdit} from "@/app/interfaces";
 import {useEffect, useState} from "react";
+import { useDarkMode } from "./DarkModeContext";
 
 interface AnswerProps {
     index: number;
@@ -11,6 +12,8 @@ interface AnswerProps {
 }
 
 export default function Answer(props: AnswerProps) {
+    const { isDarkMode, setDarkMode } = useDarkMode();
+
     const [currContent, setCurrContent] = useState(props.content)
 
     useEffect(() => {
@@ -49,7 +52,10 @@ export default function Answer(props: AnswerProps) {
     return (
         <div className={styles.flexContainer}>
             <label className={styles.letter}>{questionLetter})</label>
-            <input className={styles.content} value={currContent} placeholder={"Enter Answer"} onChange={event => onEditAnswer(event.target.value)}/>
+            <input className={styles.content} style={{
+                filter: isDarkMode ? "invert(1)" : "invert(0)",
+                transition: "filter 0.3s ease",
+            }} value={currContent} placeholder={"Enter Answer"} onChange={event => onEditAnswer(event.target.value)}/>
             <input
                 type="radio"
                 value={currContent}

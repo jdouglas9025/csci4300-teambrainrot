@@ -1,6 +1,5 @@
 "use client"
 
-import {QuizItem} from "@/app/interfaces";
 import checkMark from '../icons/CheckMarkLight.svg'
 import xMark from '../icons/XMarkLight.svg'
 import home from '../icons/HomeLight.svg'
@@ -10,6 +9,10 @@ import Link from "next/link";
 import dottedLineLightIcon from "@/app/icons/DottedLineLight.svg";
 import gearLightIcon from "@/app/icons/GearLight.svg";
 import {IQuizItem} from "../../../models/UserSchema";
+import NavBar from "./NavBar"
+import Button, {ButtonType} from "./Button"
+import {useRouter} from "next/navigation";
+import { useDarkMode } from "./DarkModeContext";
 
 interface QuizResultsProps {
     quizTitle: string
@@ -39,21 +42,18 @@ export default function QuizResultsPage(props: QuizResultsProps) {
         }
     }
 
+    const { isDarkMode, setDarkMode } = useDarkMode();
+    const router = useRouter();
+
     return (
         <>
-            <div className={styles.navBar}>
-                <Link href={'/homepage'}>
-                    <Image src={home} alt={'A home icon.'} className={styles.home}/>
-                </Link>
 
-                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
-
-                <h1>{props.quizTitle}</h1>
-
-                <Image src={dottedLineLightIcon} alt={'Dotted line icon'} className={styles.dottedLine}></Image>
-
-                <Image src={gearLightIcon} alt={'Gear icon'} className={styles.gear}></Image>
-            </div>
+            <NavBar
+            leftIcon={<Button buttonType={ButtonType.home} onClick={() => router.push('/homepage')}/>}
+            rightIcon={<Button buttonType={ButtonType.gear} onClick={() => router.push('/homepage')}/>}
+            title={props.quizTitle}
+            editable={false}
+            />
 
             <div className={styles.container}>
                 <div className={styles.results}>
@@ -66,11 +66,11 @@ export default function QuizResultsPage(props: QuizResultsProps) {
                 {/** First filter to only incorrect questions, then display them **/}
                 {incorrectQuestions.map((quizItem, index) => (
                     <div key={quizItem._id} className={styles.quizItem}>
-                        <p className={styles.question}>Q{incorrectQuestionNums[index]}: {quizItem.question}</p>
+                        <p className={`${styles.question} ${isDarkMode ? styles.darkMode : ''}`}>Q{incorrectQuestionNums[index]}: {quizItem.question}</p>
 
                         <ul className={styles.answerContainer}>{quizItem.answers.map((answer, index) => (
-                            <li key={answer._id} className={styles.answer}>
-                                <Image src={answer.content === quizItem.correctAnswerContent ? checkMark : xMark} alt={answer.content === quizItem.correctAnswerContent ? 'A checkmark.' : 'An x mark.'} className={styles.answerImage}/>
+                            <li key={answer._id} className={`${styles.answer} ${isDarkMode ? styles.darkMode : ''}`}>
+                                <Image src={answer.content === quizItem.correctAnswerContent ? checkMark : xMark} alt={answer.content === quizItem.correctAnswerContent ? 'A checkmark.' : 'An x mark.'} className={`${styles.answerImage} ${isDarkMode ? styles.darkMode : ''}`}/>
 
                                 <p><span className={styles.answerId}>{convertAnswerIndexToLetter(index)})</span> {answer.content}</p>
                             </li>

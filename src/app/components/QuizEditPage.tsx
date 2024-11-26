@@ -10,8 +10,10 @@ import {useParams, useRouter} from "next/navigation";
 import connectMongoDB from "../../../lib/mongodb";
 import {IQuizEdit, IQuizItemEdit} from "@/app/interfaces";
 import NavBar from "@/app/components/NavBar";
+import { useDarkMode } from "./DarkModeContext";
 
 export default function QuizEditPage() {
+    const { isDarkMode, setDarkMode } = useDarkMode();
     const { id } = useParams() // Get id of current quiz based on URL
     const [currQuiz, setCurrQuiz] = useState<IQuizEdit>() // Editable temporary item
     const router = useRouter()
@@ -109,7 +111,7 @@ export default function QuizEditPage() {
     }
 
     return (
-        <div className={styles.totalContainer}>
+        <div className={styles.totalContainer }>
             <NavBar leftIcon={<Link href={"/homepage"}><Button buttonType={ButtonType.backArrow}/></Link>}
                 rightIcon={<div></div>} title={currQuiz.name}/>
 
@@ -118,19 +120,19 @@ export default function QuizEditPage() {
                 <div className={styles.quizProps}>
                     <div className={styles.quizProp}>
                         <label className={styles.quizPropLabel}>Quiz Name:</label>
-                        <input className={styles.quizPropInput} value={currQuiz.name}
+                        <input className={`${styles.quizPropInput} ${isDarkMode ? styles.darkMode : ''}`} value={currQuiz.name}
                                placeholder={"Enter Quiz Name"} onChange={event => handleChange("name", event.target.value)}
                         />
                     </div>
                     <div className={styles.quizProp}>
                         <label className={styles.quizPropLabel}>Quiz Description: </label>
-                        <textarea className={styles.quizPropInput + " " + styles.textArea}
+                        <textarea className={`${styles.quizPropInput} ${isDarkMode ? styles.darkMode : ''}` + " " + styles.textArea}
                                   value={currQuiz.description}
                                   placeholder={"Enter Quiz Description"} onChange={event => handleChange("description", event.target.value)}/>
                     </div>
                     <div className={styles.quizProp}>
                         <label className={styles.quizPropLabel}>Quiz Photo: </label>
-                        <input className={styles.quizPropInput} value={currQuiz.image}
+                        <input className={`${styles.quizPropInput} ${isDarkMode ? styles.darkMode : ''}`} value={currQuiz.image}
                                placeholder={"Enter Photo URL"} onChange={event => handleChange("image", event.target.value)}/>
                     </div>
                 </div>
@@ -139,7 +141,7 @@ export default function QuizEditPage() {
                 <Questions questions={currQuiz.quizItems} onEdit={editQuestionHandler}/>
                 {/** Add new question **/}
                 <Button buttonType={ButtonType.add} onClick={addDefaultQuestion}/>
-                <hr className={styles.hrSeparate}/>
+                <hr className={`${styles.hrSeparate} ${isDarkMode ? styles.darkMode : ''}`}/>
 
                 <Button className={styles.submitButton} buttonType={ButtonType.save} type={"submit"}/>
             </form>

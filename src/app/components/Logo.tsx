@@ -12,7 +12,6 @@ export default function Logo(props: LogoProps) {
     return (
         <div style={{
             filter: isDarkMode ? "invert(1)" : "invert(0)",
-            transition: "filter 0.3s ease",
             }}>
             <Image src={simpliQuizLogo} alt={'Simpli Quiz Logo'} className={props.className}/>
         </div>
