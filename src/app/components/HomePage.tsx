@@ -124,7 +124,7 @@ export default function HomePage() {
             ) : (
                 <>
                     {/** Displaying email -- could use username, but need to refactor API calls and models **/}
-                    <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {session?.user?.email}</h1>
+                    <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {session?.user?.email.split("@")[0]}</h1>
                     <h2 className={styles.fontCaveat + " " + styles.header}>Choose or Create a Quiz</h2>
                     {/* Check if quizzes loaded */}
                     {quizzes && quizzes.length > 0 ? (

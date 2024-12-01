@@ -7,8 +7,10 @@ import styles from '../css/SignupLoginPage.module.css'
 import {useRouter} from "next/navigation";
 import Logo from "@/app/components/Logo";
 import {doCredentialLogin} from "@/login";
+import {useDarkMode} from "@/app/components/DarkModeContext";
 
 export default function LoginPage() {
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
