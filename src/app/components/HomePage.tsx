@@ -10,10 +10,11 @@ import {useState} from "react";
 import Logo from "@/app/components/Logo";
 import {doLogout} from "@/login";
 import {IQuiz} from "../../../models/UserSchema";
-import {useSession} from "next-auth/react";
+import {getSession, useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import { useDarkMode } from "./DarkModeContext";
 import connectMongoDB from "../../../lib/mongodb";
+import {signIn} from "@/auth";
 
 export default function HomePage() {
     const { data: session } = useSession()
@@ -35,7 +36,17 @@ export default function HomePage() {
         }
     }
 
-    // Prevent freezing app on initial load
+    // Get updated session -- necessary for handling issue with new users
+    useEffect(() => {
+        const ensureSession = async () => {
+            if (!session) {
+                await getSession()
+            }
+        }
+
+        ensureSession()
+    }, [session]);
+
     useEffect(() => {
         getQuizzes()
     }, [session])
@@ -106,18 +117,26 @@ export default function HomePage() {
                     <Button className={styles.userPref} buttonType={ButtonType.gear}/>
                 </Link>
             </div>
-            {/** Displaying email -- could use username, but need to refactor API calls and models **/}
-            <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {session?.user?.email}</h1>
-            <h2 className={styles.fontCaveat + " " + styles.header}>Choose or Create a Quiz</h2>
-            {/* Check if quizzes loaded */}
-            {quizzes && quizzes.length > 0 ? (
-                <Quizzes quizzes={quizzes} onDelete={deleteQuiz}/>
-            ) : (
-                <p>No quizzes found.</p>
-            )}
 
-            {/** Add a empty quiz to DB **/}
-            <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={addEmptyQuiz}/>
+            {/** Must wait for session to load -- for new users, might take a few seconds **/}
+            {!session ? (
+                <p>Loading...</p>
+            ) : (
+                <>
+                    {/** Displaying email -- could use username, but need to refactor API calls and models **/}
+                    <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {session?.user?.email}</h1>
+                    <h2 className={styles.fontCaveat + " " + styles.header}>Choose or Create a Quiz</h2>
+                    {/* Check if quizzes loaded */}
+                    {quizzes && quizzes.length > 0 ? (
+                        <Quizzes quizzes={quizzes} onDelete={deleteQuiz}/>
+                    ) : (
+                        <p>No quizzes found.</p>
+                    )}
+
+                    {/** Add a empty quiz to DB **/}
+                    <Button className={styles.newQuiz} buttonType={ButtonType.add} onClick={addEmptyQuiz}/>
+                </>
+            )}
         </div>
     );
 }

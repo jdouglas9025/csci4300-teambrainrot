@@ -27,7 +27,7 @@ export const config = {
     // Routes to restrict (restrict all routes except those defined as allowed)
     matcher: [
         '/settingspage',
-        '/quizeditpage',
+        '/quizeditpage/:path*',
         '/quiz/:path*',
         '/homepage'
         // Add additional routes as needed
