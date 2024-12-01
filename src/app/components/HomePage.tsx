@@ -13,169 +13,9 @@ import {IQuiz} from "../../../models/UserSchema";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import { useDarkMode } from "./DarkModeContext";
+import connectMongoDB from "../../../lib/mongodb";
 
-// export type Answer = {
-//     id: number;
-//     content: string;
-// }
-//
-// export type Question = {
-//     id: number;
-//     question: string;
-//     answer: number;
-//     options: Answer[];
-// }
-//
-// export type Quiz = {
-//     id: number;
-//     name: string;
-//     desc: string;
-//     imageURL: string;
-//     questions: Question[];
-// }
-//
-// export const QUIZZES_INIT: Quiz[] = [
-//     {
-//         id: 1,
-//         name: 'defaultQuiz1',
-//         desc: 'This is the default quiz.',
-//         imageURL: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
-//         questions: [
-//             {
-//                 id: 1,
-//                 question: "what is default question is this?",
-//                 answer: 1,
-//                 options: [
-//                     {
-//                         id: 1,
-//                         content: "default1"
-//                     }
-//                 ]
-//             }
-//         ],
-//     },
-//     {
-//         id: 2,
-//         name: 'defaultQuiz2',
-//         desc: 'This quiz has 2 questions.',
-//         imageURL: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
-//         questions: [
-//             {
-//                 id: 1,
-//                 question: "what is default question is this?",
-//                 answer: 2,
-//                 options: [
-//                     {
-//                         id: 1,
-//                         content: "default1"
-//                     },
-//                     {
-//                         id: 2,
-//                         content: "default2"
-//                     },
-//                     {
-//                         id: 3,
-//                         content: "default3"
-//                     },
-//                 ]
-//             },
-//             {
-//                 id: 2,
-//                 question: "what does this show?",
-//                 answer: 3,
-//                 options: [
-//                     {
-//                         id: 1,
-//                         content: "default1"
-//                     },
-//                     {
-//                         id: 2,
-//                         content: "default2"
-//                     },
-//                     {
-//                         id: 3,
-//                         content: "The limit before adding goes away is 3 options."
-//                     },
-//                 ]
-//             }
-//         ],
-//     },
-//     {
-//         id: 3,
-//         name: 'defaultQuiz3',
-//         desc: 'This quiz shows full functionality of the quiz edit component.',
-//         imageURL: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
-//         questions: [
-//             {
-//                 id: 1,
-//                 question: "what is default question is this?",
-//                 answer: 2,
-//                 options: [
-//                     {
-//                         id: 1,
-//                         content: "default1"
-//                     },
-//                     {
-//                         id: 2,
-//                         content: "default2"
-//                     },
-//                     {
-//                         id: 3,
-//                         content: "default3"
-//                     },
-//                 ]
-//             },
-//             {
-//                 id: 2,
-//                 question: "what does this show?",
-//                 answer: 3,
-//                 options: [
-//                     {
-//                         id: 1,
-//                         content: "default1"
-//                     },
-//                     {
-//                         id: 2,
-//                         content: "default2"
-//                     },
-//                     {
-//                         id: 3,
-//                         content: "The limit before adding goes away is 3 options."
-//                     },
-//                 ]
-//             },
-//             {
-//                 id: 3,
-//                 question: "what does this show?",
-//                 answer: 4,
-//                 options: [
-//                     {
-//                         id: 1,
-//                         content: "default1"
-//                     },
-//                     {
-//                         id: 2,
-//                         content: "default2"
-//                     },
-//                     {
-//                         id: 3,
-//                         content: "default3"
-//                     },
-//                     {
-//                         id: 4,
-//                         content: "Adding goes away at 4 options."
-//                     },
-//                 ]
-//             }
-//         ],
-//     },
-// ];
-
-interface HomePageProps {
-    userName: string;
-}
-
-export default function HomePage(props: HomePageProps) {
+export default function HomePage() {
     const { data: session } = useSession()
     const [quizzes, setQuizzes] = useState<IQuiz[]>([])
     const router = useRouter()
@@ -226,7 +66,7 @@ export default function HomePage(props: HomePageProps) {
                 description: 'Default Description'
             }
 
-            await fetch('http://localhost:3000/api/quizzes', {
+            const response = await fetch('http://localhost:3000/api/quizzes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -234,26 +74,24 @@ export default function HomePage(props: HomePageProps) {
                 body: JSON.stringify(data)
             })
 
-            // Retrieve updated quizzes
-            await getQuizzes()
+            // Get id from newly created quiz
+            const jsonData = await response.json()
+            const quizId = jsonData.result._id
 
             // Push new quiz edit screen
-            router.push('/quizeditpage/' + quizzes[quizzes.length - 1]._id)
+            router.push('/quizeditpage/' + quizId)
         }
     }
 
-    /*
-    async function pushQuizEdit() {
-        const userId = session?.user?.id
-        const response = await fetch('http://localhost:3000/api/quizzes/by-owner/' + userId)
-        const result = await response.json()
-        if (result.quizzes) {
-            const quizLength = result.quizzes.length;
+    // Handler for deleting quiz in quizzes component
+    async function deleteQuiz(quizId: string) {
+        await fetch('http://localhost:3000/api/quizzes/' +  quizId, {
+            method: 'DELETE',
+        })
 
-        }
+        // Now get new list
+        await getQuizzes()
     }
-     */
-
 
     const { isDarkMode, setDarkMode } = useDarkMode()
 
@@ -268,11 +106,12 @@ export default function HomePage(props: HomePageProps) {
                     <Button className={styles.userPref} buttonType={ButtonType.gear}/>
                 </Link>
             </div>
-            <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {props.userName}</h1>
+            {/** Displaying email -- could use username, but need to refactor API calls and models **/}
+            <h1 className={styles.fontCaveat + " " + styles.welcome}>Welcome, {session?.user?.email}</h1>
             <h2 className={styles.fontCaveat + " " + styles.header}>Choose or Create a Quiz</h2>
             {/* Check if quizzes loaded */}
             {quizzes && quizzes.length > 0 ? (
-                <Quizzes quizzes={quizzes}/>
+                <Quizzes quizzes={quizzes} onDelete={deleteQuiz}/>
             ) : (
                 <p>No quizzes found.</p>
             )}
