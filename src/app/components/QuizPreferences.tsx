@@ -5,6 +5,7 @@ import styles from "../css/QuizPreferences.module.css"
 import { useDarkMode } from "./DarkModeContext";
 
 
+
 export default function QuizPreferences() {
 
     const { isDarkMode, setDarkMode } = useDarkMode();

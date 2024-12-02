@@ -22,10 +22,6 @@ export default function SettingsPage() {
             <div className={styles.userContainer}>
                 <UserPreferences />
             </div>
-
-            <div className={styles.quizContainer}>
-                <QuizPreferences />
-            </div>
             
         </>
     );

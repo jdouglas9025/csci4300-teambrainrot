@@ -23,6 +23,7 @@ export function DarkModeProvider({ children }: { children: ReactNode }) {
     //saving mode 
     useEffect(() => {
         localStorage.setItem("dark-mode", String(isDarkMode))
+
         if (isDarkMode) {
             document.body.classList.add("dark-mode");
             document.body.classList.remove("light-mode");
