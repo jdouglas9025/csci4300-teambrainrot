@@ -10,6 +10,7 @@ import {useParams, useRouter} from "next/navigation";
 import {IQuiz, IQuizItem} from "../../../../models/UserSchema";
 import {Document} from "mongoose";
 import connectMongoDB from "../../../../lib/mongodb";
+import {number} from "prop-types";
 
 // Wrapper for in-progress quiz -- loads each item in a quiz taking page
 export default function InProgressQuizWrapper() {

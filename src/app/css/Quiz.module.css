@@ -23,6 +23,8 @@
 
 .quizImage {
     padding: .25em;
+    width: 175px;
+    max-height: 175px;
 }
 
 .quizProps {
@@ -75,6 +77,7 @@
 .quizPlay {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     border-left: solid black 5px;
     border-bottom: solid black 5px;
@@ -83,6 +86,7 @@
 .quizSettings {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     border-left: solid black 5px;
 }
