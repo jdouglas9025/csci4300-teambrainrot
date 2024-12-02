@@ -3,7 +3,7 @@
 import NavBar from "../components/NavBar"
 import Button, {ButtonType} from "../components/Button"
 import {useRouter} from "next/navigation";
-import QuizPreferences from "./QuizPreferences";
+import QuizPreferences from "../../unused/QuizPreferences";
 import UserPreferences from "./UserPreferences"
 import styles from "../css/SettingsPage.module.css"
 import router from "next/navigation";

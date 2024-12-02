@@ -1,6 +1,6 @@
 import styles from "@/app/css/Questions.module.css"
 import QuestionFunc from "@/app/components/Question";
-import {IQuizItem} from "../../../models/UserSchema";
+import {IQuizItem} from "../../../models/schemas";
 import {IQuizItemEdit} from "@/app/interfaces";
 
 interface QuestionsProps {

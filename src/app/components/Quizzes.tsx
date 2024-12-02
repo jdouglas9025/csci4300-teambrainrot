@@ -1,6 +1,6 @@
 import QuizFunc from "@/app/components/Quiz";
 import styles from "@/app/css/Quizzes.module.css"
-import {IQuiz} from "../../../models/UserSchema";
+import {IQuiz} from "../../../models/schemas";
 import Button, {ButtonType} from "@/app/components/Button";
 import {useSession} from "next-auth/react";
 import connectMongoDB from "../../../lib/mongodb";

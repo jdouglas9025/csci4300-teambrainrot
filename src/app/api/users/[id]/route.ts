@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import connectMongoDB from "../../../../../lib/mongodb";
-import {User} from '../../../../../models/UserSchema'
+import {User} from '../../../../../models/schemas'
 
 interface RouteParams {
     params: {

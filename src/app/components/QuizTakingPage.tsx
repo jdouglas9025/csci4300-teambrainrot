@@ -6,7 +6,7 @@ import styles from '../css/QuizTakingPage.module.css'
 import dottedLineLightIcon from "@/app/icons/DottedLineLight.svg";
 import gearLightIcon from "@/app/icons/GearLight.svg";
 import Image from "next/image";
-import {IQuizItem} from "../../../models/UserSchema";
+import {IQuizItem} from "../../../models/schemas";
 import NavBar from "@/app/components/NavBar";
 import { useDarkMode } from "./DarkModeContext";
 
