@@ -9,7 +9,7 @@ import Link from "next/link";
 import {useState} from "react";
 import Logo from "@/app/components/Logo";
 import {doLogout} from "@/login";
-import {IQuiz} from "../../../models/UserSchema";
+import {IQuiz} from "../../../models/schemas";
 import {getSession, useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import { useDarkMode } from "./DarkModeContext";

@@ -3,7 +3,7 @@ import Button, {ButtonType} from "@/app/components/Button";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import {IQuiz} from "../../../models/UserSchema";
+import {IQuiz} from "../../../models/schemas";
 import { useDarkMode } from "./DarkModeContext";
 
 interface QuizProps {

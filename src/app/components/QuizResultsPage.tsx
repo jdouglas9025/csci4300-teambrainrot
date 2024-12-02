@@ -8,7 +8,7 @@ import styles from '../css/QuizResultsPage.module.css'
 import Link from "next/link";
 import dottedLineLightIcon from "@/app/icons/DottedLineLight.svg";
 import gearLightIcon from "@/app/icons/GearLight.svg";
-import {IQuizItem} from "../../../models/UserSchema";
+import {IQuizItem} from "../../../models/schemas";
 import NavBar from "./NavBar"
 import Button, {ButtonType} from "./Button"
 import {useRouter} from "next/navigation";

@@ -2,7 +2,7 @@ import styles from "@/app/css/Question.module.css";
 import Answer from "@/app/components/Answer";
 import Button, {ButtonType} from "@/app/components/Button";
 import {ChangeEvent, useState} from "react";
-import {IQuizItem} from "../../../models/UserSchema";
+import {IQuizItem} from "../../../models/schemas";
 import {IAnswerEdit, IQuizEdit, IQuizItemEdit} from "@/app/interfaces";
 import { useDarkMode } from "./DarkModeContext";
 

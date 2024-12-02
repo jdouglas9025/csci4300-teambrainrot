@@ -89,18 +89,15 @@ const userSchema = new Schema<IUser>({
 
 // Clear the cache before defining models (prevents issue if code changes)
 if (mongoose.models) {
-    if (mongoose.models.Answer) delete mongoose.models.Answer
-    if (mongoose.models.QuizItem) delete mongoose.models.QuizItem
     if (mongoose.models.Quiz) delete mongoose.models.Quiz
     if (mongoose.models.User) delete mongoose.models.User
 }
 
 // Construct the models and export them
-const Answer = mongoose.models.Answer || mongoose.model("Answer", answerSchema)
-const QuizItem = mongoose.models.QuizItem || mongoose.model("QuizItem", quizItemSchema)
+
 const Quiz = mongoose.models.Quiz || mongoose.model("Quiz", quizSchema)
 const User = mongoose.models.User || mongoose.model("User", userSchema)
-export {User, Answer, QuizItem, Quiz}
+export {User, Quiz}
 
 // Export quiz interface
 export type { IQuiz, IQuizItem }

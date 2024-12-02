@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import styles from "../css/QuizPreferences.module.css"
-import { useDarkMode } from "./DarkModeContext";
+import styles from "../app/css/QuizPreferences.module.css"
+import { useDarkMode } from "../app/components/DarkModeContext";
 
 
 
