@@ -1,3 +1,5 @@
+
+
 .userContainer {
   padding: 2rem 2rem 0.5rem 2rem;
   display: flex;
@@ -29,4 +31,40 @@
   .deleteText {
     color: #ff4444;
     font-size: 1rem;
+  }
+
+  .line1 {
+    border-top: 5px dashed black;
+    padding-left: 35%;
+    margin-left: 55em;
+    transform: rotate(-30deg) translate(-2em, 8rem)
+  }
+
+  .line2 {
+    border-top: 5px dashed black;
+    padding-left: 35%;
+    margin-left: 55em;
+    transform: rotate(-30deg) translate(-60rem, -16rem)
+  }
+
+  .line3 {
+    border-top: 5px solid black;
+    padding-left: 35%;
+    margin-left: 55em;
+    transform: rotate(-30deg) translate(-80rem, -30rem)
+  }
+
+  .line4 {
+    border-top: 5px solid black;
+    padding-left: 25%;
+    margin-left: 70em;
+    transform: rotate(-30deg) translate(3rem, -3rem)
+  }
+
+  .line5 {
+    border-top: 5px solid black;
+    padding-left: 30%;
+    margin-left: 55em;
+    margin-right: 60em;
+    transform: rotate(-30deg) translate(7rem, 16rem)
   }
