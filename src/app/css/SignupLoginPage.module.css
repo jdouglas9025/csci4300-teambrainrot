@@ -1,5 +1,6 @@
 /** CSS for both sign up and login pages since same structure **/
 
+
 .background {
     padding: 1.5rem;
     background-image: url("../images/Background.svg");
@@ -7,6 +8,10 @@
     background-position: center;
     width: 100vw;
     height: 100vh;
+}
+
+.name {
+    color: black;
 }
 
 .container {
@@ -43,6 +48,7 @@
     border: .25rem solid black;
 }
 
+
 /** Container for label and input box pairs **/
 .inputContainer {
     display: flex;
@@ -62,6 +68,7 @@
     padding: 1rem;
     font-size: 1rem;
     border: .25rem solid black;
+    color: black;
 }
 
 .button {
@@ -73,6 +80,10 @@
     font-size: 1rem;
     border: .25rem solid black;
     text-transform: uppercase;
+}
+
+.button.darkMode {
+    filter: invert(1)
 }
 
 .button:hover {
@@ -100,4 +111,8 @@
 .logo {
     background-color: white;
     width: 15rem;
+}
+
+.logo.darkMode {
+    filter: invert(1);
 }

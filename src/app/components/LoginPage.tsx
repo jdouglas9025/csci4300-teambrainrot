@@ -7,7 +7,7 @@ import styles from '../css/SignupLoginPage.module.css'
 import {useRouter} from "next/navigation";
 import Logo from "@/app/components/Logo";
 import {doCredentialLogin} from "@/login";
-import {useDarkMode} from "@/app/components/DarkModeContext";
+import { useDarkMode } from "./DarkModeContext";
 
 export default function LoginPage() {
 
@@ -38,26 +38,32 @@ export default function LoginPage() {
         setPassword('');
     }
 
+    const { isDarkMode, setDarkMode } = useDarkMode()
+
     return (
         <div className={styles.background}>
             <div className={styles.container}>
-                <Logo className={styles.logo}></Logo>
-                <h1 className={styles.name}>Simpli Quiz</h1>
+                <Logo className={`${styles.logo} ${isDarkMode ? styles.darkMode : ''}`}></Logo>
+                <h1 className={styles.name} >Simpli Quiz</h1>
 
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
                     <div className={styles.fieldsContainer}>
                         <div className={styles.inputContainer}>
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email" style={{
+                            filter: isDarkMode ? "invert(1)" : "invert(0)"
+                            }}>Email</label>
                             <input
                                 id="email"
                                 type="email"
-                                value={email}
+                                value={email} 
                                 onChange={event => setEmail(event.target.value)}
                             />
                         </div>
 
                         <div className={styles.inputContainer}>
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password" style={{
+                            filter: isDarkMode ? "invert(1)" : "invert(0)"
+                            }}>Password</label>
                             <input
                                 id="password"
                                 type="password"
@@ -68,11 +74,13 @@ export default function LoginPage() {
                     </div>
 
                     {/** No action for button since form will call handler **/}
-                    <Button className={styles.button} type='submit' buttonType={ButtonType.login}/>
+                    <Button className={`${styles.button} ${isDarkMode ? styles.darkMode : ''}`}  type='submit' buttonType={ButtonType.login}/>
                 </form>
 
                 <Link className={styles.link} href='/signup'>
-                    <p>Don&#39;t have an account? <span>Sign up</span></p>
+                    <p style={{
+                    filter: isDarkMode ? "invert(1)" : "invert(0)"
+            }}>Don&#39;t have an account? <span>Sign up</span></p>
                 </Link>
             </div>
         </div>
